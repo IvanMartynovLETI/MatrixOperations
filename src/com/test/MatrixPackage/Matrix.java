@@ -1,7 +1,9 @@
 package com.test.MatrixPackage;
 
-public interface MatrixMethods {
-    default public int[][] generateRandomMatrix(String dim)
+import com.test.UserPackage.UserFlip;
+
+public class Matrix implements UserFlip {
+    public int[][] generateRandomMatrix(String dim)
     {
         int dimension;
         boolean flag=true;
@@ -47,7 +49,7 @@ public interface MatrixMethods {
         return randMatrix;
     }
 
-    default public int[][] flipRelToMainDiag(int[][] m) {
+    public int[][] flipRelToMainDiag(int[][] m) {
         //flips matrix previously generated relative to main diagonal
         int[][] resultMatrix = new int[m.length][m[0].length];
         for (int i=0; i<m.length; i++)
@@ -58,7 +60,7 @@ public interface MatrixMethods {
         return resultMatrix;
     }
 
-    default public int[][] flipRelToSecDiag(int[][] m)
+    public int[][] flipRelToSecDiag(int[][] m)
     {
         //flip matrix previously generated relative to secondary diagonal
         int[][] resultMatrix=new int[m.length][m[0].length];
@@ -70,7 +72,7 @@ public interface MatrixMethods {
         return resultMatrix;
     }
 
-    default public int[][] flipVertically(int[][] m)
+    public int[][] flipVertically(int[][] m)
     {
         //flips matrix previously generated vertically
         int[][] resultMatrix=new int[m.length][m[0].length];
@@ -82,7 +84,7 @@ public interface MatrixMethods {
         return resultMatrix;
     }
 
-    default public int[][] flipHorizontally(int[][] m)
+    public int[][] flipHorizontally(int[][] m)
     {
         //flips matrix previously generated horizontally
         int[][] resultMatrix=new int[m.length][m[0].length];
@@ -94,7 +96,7 @@ public interface MatrixMethods {
         return resultMatrix;
     }
 
-    default public void displayMatrix(int m[][])
+    public void displayMatrix(int m[][])
     {
         for(int i=0; i<m.length; i++)
         {
@@ -105,7 +107,7 @@ public interface MatrixMethods {
         System.out.println("");
     }
 
-    default public int[][] userFlipMethod(int[][] m)
+    public int[][] userFlipMethod(int[][] m)
     {
         int[][] mr=new int[m.length][m[0].length];
         for(int i=0; i<m.length; i++)

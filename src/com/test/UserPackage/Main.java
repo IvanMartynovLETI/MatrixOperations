@@ -1,37 +1,41 @@
 package com.test.UserPackage;
 
-import com.test.MatrixPackage.MatrixMethods;
+import com.test.MatrixPackage.Matrix;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("1st commit");
-        UserClass object=new UserClass();
-        UserFlip mm;
-        mm=object;
+
+        Matrix MatrixObject = new Matrix();
+        UserClass UserClassObject = new UserClass();
+        UserFlip UserFlipReference;
+
+        UserFlipReference=MatrixObject;
 
         System.out.println("Initial matrix is");
-        int[][] m1=mm.generateRandomMatrix(args[0]);
-        mm.displayMatrix(m1);
+        int[][] m1=((Matrix) UserFlipReference).generateRandomMatrix(args[0]);
+        ((Matrix) UserFlipReference).displayMatrix(m1);
 
         System.out.println("Initial matrix after horizontal flipping is");
-        int[][] m2=mm.flipHorizontally(m1);
-        mm.displayMatrix(m2);
+        int[][] m2=((Matrix) UserFlipReference).flipHorizontally(m1);
+        ((Matrix) UserFlipReference).displayMatrix(m2);
 
         System.out.println("Initial matrix after vertical flipping is");
-        int[][] m3=mm.flipVertically(m1);
-        mm.displayMatrix(m3);
+        int[][] m3=((Matrix) UserFlipReference).flipVertically(m1);
+        ((Matrix) UserFlipReference).displayMatrix(m3);
 
         System.out.println("Initial matrix after flipping relative to main diagonal is");
-        int[][] m4=mm.flipRelToMainDiag(m1);
-        mm.displayMatrix(m4);
+        int[][] m4=((Matrix) UserFlipReference).flipRelToMainDiag(m1);
+        ((Matrix) UserFlipReference).displayMatrix(m4);
 
         System.out.println("Initial matrix after flipping relative to secondary diagonal is");
-        int[][] m5=mm.flipRelToSecDiag(m1);
-        mm.displayMatrix(m5);
+        int[][] m5=((Matrix) UserFlipReference).flipRelToSecDiag(m1);
+        ((Matrix) UserFlipReference).displayMatrix(m5);
 
         System.out.println("Initial matrix after user flipping is");
-        int[][] m6=mm.userFlipMethod(m1);
-        mm.displayMatrix(m6);
+        UserFlipReference=UserClassObject;
+        int[][] m6=UserFlipReference.userFlipMethod(m1);
+        UserFlipReference=MatrixObject;
+        ((Matrix) UserFlipReference).displayMatrix(m6);
     }
 }
