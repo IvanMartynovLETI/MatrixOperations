@@ -5,7 +5,7 @@ import com.test.MatrixPackage.UserInterface;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("1st commit");
+        
         UserClass object=new UserClass();
         UserInterface mm;
         mm=object;
