@@ -1,13 +1,13 @@
 package com.test.UserPackage;
 
-import com.test.MatrixPackage.UserInterface;
+import com.test.MatrixPackage.MatrixMethods;
 
 public class Main {
 
     public static void main(String[] args) {
-        
+        System.out.println("1st commit");
         UserClass object=new UserClass();
-        UserInterface mm;
+        MatrixMethods mm;
         mm=object;
 
         System.out.println("Initial matrix is");

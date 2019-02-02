@@ -1,6 +1,6 @@
 package com.test.MatrixPackage;
 
-public interface UserInterface {
+public interface MatrixMethods {
     default public int[][] generateRandomMatrix(String dim)
     {
         int dimension;
