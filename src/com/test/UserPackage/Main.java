@@ -1,12 +1,12 @@
 package com.test.UserPackage;
 
-import com.test.MatrixPackage.MatrixMethods;
+import com.test.MatrixPackage.UserInterface;
 
 public class Main {
 
     public static void main(String[] args) {
         UserClass object=new UserClass();
-        MatrixMethods mm;
+        UserInterface mm;
         mm=object;
 
         System.out.println("Initial matrix is");

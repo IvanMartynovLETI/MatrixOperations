@@ -1,8 +1,8 @@
 package com.test.UserPackage;
 
-import com.test.MatrixPackage.MatrixMethods;
+import com.test.MatrixPackage.UserInterface;
 
-public class UserClass implements MatrixMethods {
+public class UserClass implements UserInterface {
     public int[][] userFlipMethod(int[][] m)
     {
         int[][] mr=new int[m.length][m[0].length];
