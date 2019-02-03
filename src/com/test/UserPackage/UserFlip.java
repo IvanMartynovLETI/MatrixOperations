@@ -1,5 +1,5 @@
 package com.test.UserPackage;
 
 public interface UserFlip {
-    public int[][] userFlipMethod(int[][] m);
+    public int[][] flipMethod(int[][] m);
 }

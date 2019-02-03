@@ -1,7 +1,7 @@
 package com.test.UserPackage;
 
 public class UserClass implements UserFlip {
-    public int[][] userFlipMethod(int[][] m)
+    public int[][] flipMethod(int[][] m)
     {
         int[][] mr=new int[m.length][m[0].length];
         for(int i=0; i<m.length; i++)
