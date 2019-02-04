@@ -1,10 +1,15 @@
-package com.test.mainpackage;
+package com.test.matrix;
 
-import com.test.mainpackage.interfacesofmethods.GenerateMatrix;
-import com.test.mainpackage.interfacesofmethods.ShowMatrix;
-import com.test.mainpackage.interfacesofmethods.UserFlip;
-import com.test.mainpackage.classesofmethods.DisplayMatrix;
-import com.test.mainpackage.classesofmethods.*;
+import com.test.matrix.classes.flip.FlipHorizontally;
+import com.test.matrix.classes.flip.FlipRelToMainDiag;
+import com.test.matrix.classes.flip.FlipRelToSecDiag;
+import com.test.matrix.classes.flip.FlipVertically;
+import com.test.matrix.classes.generation.GenerateRandomMatrix;
+import com.test.matrix.interfaces.GenerateMatrix;
+import com.test.matrix.interfaces.ShowMatrix;
+import com.test.matrix.interfaces.UserFlip;
+import com.test.matrix.classes.mapping.DisplayMatrix;
+import com.test.matrix.classes.*;
 
 public class Main {
 

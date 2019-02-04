@@ -1,4 +1,4 @@
-package com.test.mainpackage.interfacesofmethods;
+package com.test.matrix.interfaces;
 
 public interface UserFlip {
     public int[][] flipMethod(int[][] m);

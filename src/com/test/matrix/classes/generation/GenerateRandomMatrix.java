@@ -1,6 +1,6 @@
-package com.test.mainpackage.classesofmethods;
+package com.test.matrix.classes.generation;
 
-import com.test.mainpackage.interfacesofmethods.GenerateMatrix;
+import com.test.matrix.interfaces.GenerateMatrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
     public int[][] GenMatrixMethod(String dim)

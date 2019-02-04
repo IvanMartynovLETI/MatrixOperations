@@ -1,6 +1,6 @@
-package com.test.mainpackage.classesofmethods;
+package com.test.matrix.classes.flip;
 
-import com.test.mainpackage.interfacesofmethods.UserFlip;
+import com.test.matrix.interfaces.UserFlip;
 
 public class FlipRelToSecDiag implements UserFlip {
 

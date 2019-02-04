@@ -1,6 +1,6 @@
-package com.test.mainpackage.classesofmethods;
+package com.test.matrix.classes.mapping;
 
-import com.test.mainpackage.interfacesofmethods.ShowMatrix;
+import com.test.matrix.interfaces.ShowMatrix;
 
 public class DisplayMatrix implements ShowMatrix {
     public void displayMatrix(int m[][])
