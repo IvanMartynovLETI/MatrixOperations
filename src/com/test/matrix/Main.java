@@ -1,10 +1,12 @@
 package com.test.matrix;
 
+import com.test.matrix.classes.checkarg.ArgCheck;
 import com.test.matrix.classes.flip.FlipHorizontally;
 import com.test.matrix.classes.flip.FlipRelToMainDiag;
 import com.test.matrix.classes.flip.FlipRelToSecDiag;
 import com.test.matrix.classes.flip.FlipVertically;
 import com.test.matrix.classes.generation.GenerateRandomMatrix;
+import com.test.matrix.interfaces.CheckArgForEmpty;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.ShowMatrix;
 import com.test.matrix.interfaces.UserFlip;
@@ -14,6 +16,12 @@ import com.test.matrix.classes.*;
 public class Main {
 
     public static void main(String[] args) {
+
+        ArgCheck ArgCheckObject=new ArgCheck();
+        CheckArgForEmpty CheckArgForEmptyReference;
+        CheckArgForEmptyReference=ArgCheckObject;
+        String dim;
+        dim=CheckArgForEmptyReference.isEmpty(args);
 
         GenerateRandomMatrix GenerateMatrixObject=new GenerateRandomMatrix();
         FlipHorizontally FlipHorizontallyObject=new FlipHorizontally();
@@ -30,8 +38,8 @@ public class Main {
         ShowMatrixReference=DisplayMatrixObject;
 
         GenerateMatrixReference=GenerateMatrixObject;
+        int[][] m1=GenerateMatrixReference.GenMatrixMethod(dim);
         System.out.println("Initial matrix is");
-        int[][] m1=GenerateMatrixReference.GenMatrixMethod(args[0]);
         ShowMatrixReference.displayMatrix(m1);
 
         System.out.println("Initial matrix after horizontal flipping is");
@@ -59,5 +67,9 @@ public class Main {
         UserFlipReference=UserClassObject;
         int[][] m6=UserFlipReference.flipMethod(m1);
         ShowMatrixReference.displayMatrix(m6);
+
+
     }
+
+
 }

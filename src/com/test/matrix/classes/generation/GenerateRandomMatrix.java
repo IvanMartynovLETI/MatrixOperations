@@ -6,7 +6,7 @@ public class GenerateRandomMatrix implements GenerateMatrix {
     public int[][] GenMatrixMethod(String dim)
     {
         int dimension;
-        boolean flag=true;
+        boolean generationOK=true;
         int[][] randMatrix;
         try
         {
@@ -16,7 +16,7 @@ public class GenerateRandomMatrix implements GenerateMatrix {
 
             System.out.println("Input parameter is not an integer. Random matrix has not been created.");
             System.out.println("Abnormal program termination");
-            flag=false;
+            generationOK=false;
             dimension = 2;
         }
 
@@ -24,7 +24,7 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         {
             System.out.println("Input parameter is integer, but not positive. Random matrix has not been created.");
             System.out.println("Abnormal program termination");
-            flag=false;
+            generationOK=false;
             dimension=2;
         }
 
@@ -32,7 +32,7 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         {
             System.out.println("Input parameter must be more than 1. Random matrix has not been created.");
             System.out.println("Abnormal program termination");
-            flag=false;
+            generationOK=false;
             dimension=2;
         }
 
@@ -41,7 +41,7 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         for(int i=0; i<dimension; i++)
             for (int j=0; j<dimension; j++)
             {
-                if(flag)
+                if(generationOK)
                     randMatrix[i][j]=(int)(Math.random()*100);
                 else
                     randMatrix[i][j]=0;
