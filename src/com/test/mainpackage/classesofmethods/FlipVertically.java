@@ -1,6 +1,6 @@
-package com.test.MatrixPackage;
+package com.test.mainpackage.classesofmethods;
 
-import com.test.UserPackage.UserFlip;
+import com.test.mainpackage.interfacesofmethods.UserFlip;
 
 public class FlipVertically implements UserFlip {
     public int[][] flipMethod(int[][] m)

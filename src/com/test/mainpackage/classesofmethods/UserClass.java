@@ -1,4 +1,6 @@
-package com.test.UserPackage;
+package com.test.mainpackage.classesofmethods;
+
+import com.test.mainpackage.interfacesofmethods.UserFlip;
 
 public class UserClass implements UserFlip {
     public int[][] flipMethod(int[][] m)

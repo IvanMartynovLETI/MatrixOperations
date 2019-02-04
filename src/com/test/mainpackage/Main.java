@@ -1,6 +1,10 @@
-package com.test.UserPackage;
+package com.test.mainpackage;
 
-import com.test.MatrixPackage.*;
+import com.test.mainpackage.interfacesofmethods.GenerateMatrix;
+import com.test.mainpackage.interfacesofmethods.ShowMatrix;
+import com.test.mainpackage.interfacesofmethods.UserFlip;
+import com.test.mainpackage.classesofmethods.DisplayMatrix;
+import com.test.mainpackage.classesofmethods.*;
 
 public class Main {
 
