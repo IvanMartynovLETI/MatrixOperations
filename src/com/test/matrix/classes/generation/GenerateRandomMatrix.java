@@ -3,38 +3,47 @@ package com.test.matrix.classes.generation;
 import com.test.matrix.interfaces.GenerateMatrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
-    public int[][] GenMatrixMethod(String dim)
+    public int[][] GenMatrixMethod(int dim)
     {
-        int dimension;
         boolean generationOK=true;
+        int dimension=0;
         int[][] randMatrix;
-        try
-        {
-            dimension=Integer.parseInt(dim);
-        }
-        catch(NumberFormatException ex) {
 
-            System.out.println("Input parameter is not an integer. Random matrix has not been created.");
-            System.out.println("Abnormal program termination");
-            generationOK=false;
-            dimension = 2;
-        }
-
-        if(dimension<0)
+        if(dim<0)
         {
-            System.out.println("Input parameter is integer, but not positive. Random matrix has not been created.");
+            System.out.println("Input parameter for GenMatrixMethod() method is integer, but not positive. Random matrix has not been created.");
             System.out.println("Abnormal program termination");
             generationOK=false;
             dimension=2;
         }
 
-        else if(dimension==1)
+        else if(dim==0)
         {
-            System.out.println("Input parameter must be more than 1. Random matrix has not been created.");
+            System.out.println("Input parameter for GenMatrixMethod() is 0. Random matrix has not been created");
             System.out.println("Abnormal program termination");
             generationOK=false;
             dimension=2;
         }
+
+        else if(dim==1)
+        {
+            System.out.println("Input parameter for GenMatrixMethod() is 1. Random matrix has not been created.");
+            System.out.println("Abnormal program termination");
+            generationOK=false;
+            dimension=2;
+        }
+
+        else if(dim<0)
+        {
+            System.out.println("Input parameter for GenMatrixMethod() is negative integer. Random matrix has not been created");
+            System.out.println("Abnormal program termination");
+            generationOK=false;
+            dimension=2;
+        }
+
+        else
+            dimension=dim;
+
 
         randMatrix=new int[dimension][dimension];
 

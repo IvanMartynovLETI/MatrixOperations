@@ -8,7 +8,7 @@ public class ArgCheck implements CheckArgForEmpty {
         String outStr;
         if(strArr.length==0)
         {
-            System.out.println("Input parameter is empty.");
+            System.out.println("Command line parameter is empty.");
             outStr="suxx";
         }
         else
