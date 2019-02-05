@@ -13,70 +13,58 @@ import com.test.matrix.classes.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
 
-        ArgCheck ArgCheckObject=new ArgCheck();
-        CheckArgForEmpty CheckArgForEmptyReference;
-        CheckArgForEmptyReference=ArgCheckObject;
-
-
-        CrazyUser CrazyUserObject=new CrazyUser();
-        MadUser MadUserReference;
-        MadUserReference=CrazyUserObject;
-
-        String OutStr1=CheckArgForEmptyReference.isEmpty(args);
-        int dim=MadUserReference.CheckUserInput(OutStr1);
-
-        GenerateRandomMatrix GenerateMatrixObject=new GenerateRandomMatrix();
-        FlipHorizontally FlipHorizontallyObject=new FlipHorizontally();
-        FlipVertically FlipVerticallyObject=new FlipVertically();
-        FlipRelToMainDiag FlipRelToMainDiagObject=new FlipRelToMainDiag();
-        FlipRelToSecDiag FlipRelToSecDiagObject=new FlipRelToSecDiag();
-        DisplayMatrix DisplayMatrixObject=new DisplayMatrix();
-        UserClass UserClassObject=new UserClass();
-
-        UserFlip UserFlipReference;
-        GenerateMatrix GenerateMatrixReference;
-        ShowMatrix ShowMatrixReference;
-
-        ShowMatrixReference=DisplayMatrixObject;
-
-        GenerateMatrixReference=GenerateMatrixObject;
+        ArgCheck argCheckObj = new ArgCheck ();
+        CrazyUser crazyUserObj = new CrazyUser ();
 
 
+        String outStr1 = argCheckObj.checkForEmpty(args);
+        int dim = crazyUserObj.checkUserInput(outStr1);
 
-        int[][] m1=GenerateMatrixReference.GenMatrixMethod(dim);
-        System.out.println("Initial matrix is");
-        ShowMatrixReference.displayMatrix(m1);
+        GenerateRandomMatrix genMObj = new GenerateRandomMatrix ();
+        FlipHorizontally flipHorObj = new FlipHorizontally ();
+        FlipVertically flipVertObj = new FlipVertically ();
+        FlipRelToMainDiag flipMDObj = new FlipRelToMainDiag ();
+        FlipRelToSecDiag flipSDObj = new FlipRelToSecDiag ();
+        DisplayMatrix dispMObj = new DisplayMatrix ();
+        UserClass userObj = new UserClass ();
 
-        System.out.println("Initial matrix after horizontal flipping is");
-        UserFlipReference=FlipHorizontallyObject;
-        int[][] m2=UserFlipReference.flipMethod(m1);
-        ShowMatrixReference.displayMatrix(m2);
+        UserFlip userFlipRef;
+        GenerateMatrix genMRef;
+        ShowMatrix showMRef;
 
+        showMRef = dispMObj;
 
-        System.out.println("Initial matrix after vertical flipping is");
-        UserFlipReference=FlipVerticallyObject;
-        int[][] m3=UserFlipReference.flipMethod(m1);
-        ShowMatrixReference.displayMatrix(m3);
+        genMRef = genMObj;
 
-        System.out.println("Initial matrix after flipping relative to main diagonal is");
-        UserFlipReference=FlipRelToMainDiagObject;
-        int[][] m4=UserFlipReference.flipMethod(m1);
-        ShowMatrixReference.displayMatrix(m4);
+        int[][] m1 = genMRef.genMatrixMethod (dim);
+        System.out.println ("Initial matrix is");
+        showMRef.displayMatrix (m1);
 
-        System.out.println("Initial matrix after flipping relative to secondary diagonal is");
-        UserFlipReference=FlipRelToSecDiagObject;
-        int[][] m5=UserFlipReference.flipMethod(m1);
-        ShowMatrixReference.displayMatrix(m5);
+        System.out.println ("Initial matrix after horizontal flipping is");
+        userFlipRef = flipHorObj;
+        int[][] m2 = userFlipRef.flipMethod (m1);
+        showMRef.displayMatrix (m2);
 
-        System.out.println("Initial matrix after user flipping is");
-        UserFlipReference=UserClassObject;
-        int[][] m6=UserFlipReference.flipMethod(m1);
-        ShowMatrixReference.displayMatrix(m6);
+        System.out.println ("Initial matrix after vertical flipping is");
+        userFlipRef = flipVertObj;
+        int[][] m3 = userFlipRef.flipMethod (m1);
+        showMRef.displayMatrix (m3);
 
+        System.out.println ("Initial matrix after flipping relative to main diagonal is");
+        userFlipRef = flipMDObj;
+        int[][] m4 = userFlipRef.flipMethod (m1);
+        showMRef.displayMatrix (m4);
 
+        System.out.println ("Initial matrix after flipping relative to secondary diagonal is");
+        userFlipRef = flipSDObj;
+        int[][] m5 = userFlipRef.flipMethod (m1);
+        showMRef.displayMatrix (m5);
+
+        System.out.println ("Initial matrix after user flipping is");
+        userFlipRef = userObj;
+        int[][] m6 = userFlipRef.flipMethod (m1);
+        showMRef.displayMatrix (m6);
     }
-
-
 }

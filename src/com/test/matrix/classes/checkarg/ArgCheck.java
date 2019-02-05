@@ -1,18 +1,18 @@
 package com.test.matrix.classes.checkarg;
 
-import com.test.matrix.interfaces.CheckArgForEmpty;
+public class ArgCheck {
 
-public class ArgCheck implements CheckArgForEmpty {
-    public String isEmpty(String[] strArr)
+    public String checkForEmpty (String[] strArr)
     {
         String outStr;
-        if(strArr.length==0)
+
+        if (strArr.length == 0)
         {
-            System.out.println("Command line parameter is empty.");
-            outStr="suxx";
+            System.out.println ("Command line parameter is empty.");
+            outStr = "suxx";
         }
         else
-            outStr=strArr[0];
+            outStr = strArr[0];
         return outStr;
     }
 }
