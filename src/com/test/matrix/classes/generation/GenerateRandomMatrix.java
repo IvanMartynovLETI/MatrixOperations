@@ -44,4 +44,13 @@ public class GenerateRandomMatrix implements GenerateMatrix {
             }
         return randMatrix;
     }
+
+    public String getDescription() {
+        String s1, s2, s3;
+        s1 = "int[][] generateMatrix(int dim) of GenerateRandomMatrix class \ncreates square random matrix dimension of dim, \n";
+        s2 = "dim parameter must be positive integer greater than 1. \n";
+        s3 = s1 + s2;
+        return s3;
+
+    }
 }

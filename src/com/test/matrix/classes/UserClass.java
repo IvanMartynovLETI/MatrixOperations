@@ -14,4 +14,12 @@ public class UserClass implements UserFlip {
         return mr;
     }
 
+    public String getDescription() {
+        String s1, s2, s3;
+        s1 = "int[][] flipMethod(int[][] inputMatrix) method of UserClass class returns matrix, \n";
+        s2 = "flipped by user-defined method, inputMatrix must be a square matrix \n";
+        s3 = s1 + s2;
+        return s3;
+    }
+
 }

@@ -36,31 +36,37 @@ public class Main {
         int[][] m1 = genMRef.generateMatrix(dim);
         System.out.println("Initial matrix is");
         showMRef.displayMatrix(m1);
+        System.out.println(showMRef.getDescription());
 
         System.out.println("Initial matrix after horizontal flipping is");
         userFlipRef = flipHorObj;
         int[][] m2 = userFlipRef.flipMethod(m1);
         showMRef.displayMatrix(m2);
+        System.out.println(userFlipRef.getDescription());
 
         System.out.println("Initial matrix after vertical flipping is");
         userFlipRef = flipVertObj;
         int[][] m3 = userFlipRef.flipMethod(m1);
         showMRef.displayMatrix(m3);
+        System.out.println(userFlipRef.getDescription());
 
         System.out.println("Initial matrix after flipping relative to main diagonal is");
         userFlipRef = flipMDObj;
         int[][] m4 = userFlipRef.flipMethod(m1);
         showMRef.displayMatrix(m4);
+        System.out.println(userFlipRef.getDescription());
 
         System.out.println("Initial matrix after flipping relative to secondary diagonal is");
         userFlipRef = flipSDObj;
         int[][] m5 = userFlipRef.flipMethod(m1);
         showMRef.displayMatrix(m5);
+        System.out.println(userFlipRef.getDescription());
 
         System.out.println("Initial matrix after user flipping is");
         userFlipRef = userObj;
         int[][] m6 = userFlipRef.flipMethod(m1);
         showMRef.displayMatrix(m6);
+        System.out.println(userFlipRef.getDescription());
     }
 
     private static int checkInput(String[] strArr) {

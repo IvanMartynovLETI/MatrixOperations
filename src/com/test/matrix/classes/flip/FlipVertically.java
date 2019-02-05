@@ -14,4 +14,12 @@ public class FlipVertically implements UserFlip {
         }
         return resultMatrix;
     }
+
+    public String getDescription() {
+        String s1, s2, s3;
+        s1 = "int[][] flipMethod(int[][] inputMatrix) method of FlipVertically class returns matrix, \n";
+        s2 = "flipped vertically, inputMatrix must be a square matrix \n";
+        s3 = s1 + s2;
+        return s3;
+    }
 }

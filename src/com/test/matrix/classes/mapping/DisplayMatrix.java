@@ -12,4 +12,10 @@ public class DisplayMatrix implements ShowMatrix {
         }
         System.out.println("");
     }
+
+    public String getDescription() {
+        String s1;
+        s1 = "void displayMatrix(int m[][]) method of DisplayMatrix class \nshows matrix m on display. \n";
+        return s1;
+    }
 }
