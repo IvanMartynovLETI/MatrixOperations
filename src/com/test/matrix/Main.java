@@ -19,12 +19,12 @@ public class Main {
     try {
       int dim = checkInput(args);
 
-      List<Supplier<UserFlip>> algorithms = Arrays.asList(
-          FlipHorizontally::new,
-          FlipVertically::new,
-          FlipRelToMainDiag::new,
-          FlipRelToSecDiag::new,
-          UserClass::new
+      List<UserFlip> algorithms = Arrays.asList(
+          new FlipHorizontally(),
+          new FlipVertically(),
+          new FlipRelToMainDiag(),
+          new FlipRelToSecDiag(),
+          new UserClass()
       );
 
       ShowMatrix matrixPrinter = new DisplayMatrix();
@@ -33,8 +33,7 @@ public class Main {
       System.out.println("Initial matrix is");
       matrixPrinter.displayMatrix(matrix);
 
-      for (Supplier<UserFlip> alg : algorithms) {
-        UserFlip userFlip = alg.get();
+      for (UserFlip userFlip : algorithms) {
         System.out.println(userFlip.getDescription());
         matrixPrinter.displayMatrix(userFlip.flipMethod(matrix));
       }
