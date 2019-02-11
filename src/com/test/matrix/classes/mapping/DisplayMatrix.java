@@ -14,8 +14,6 @@ public class DisplayMatrix implements ShowMatrix {
     }
 
     public String getDescription() {
-        String s1;
-        s1 = "void displayMatrix(int m[][]) method of DisplayMatrix class \nshows matrix m on display. \n";
-        return s1;
+        return "void displayMatrix(int m[][]) method of DisplayMatrix class \nshows matrix m on display. \n";
     }
 }

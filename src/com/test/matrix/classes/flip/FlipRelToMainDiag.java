@@ -16,11 +16,8 @@ public class FlipRelToMainDiag implements UserFlip {
     }
 
     public String getDescription() {
-        String s1, s2, s3, s4;
-        s1 = "int[][] flipMethod(int[][] inputMatrix) method \nof FlipRelToMainDiag class returns matrix, \n";
-        s2 = "flipped relative to main diagonal of matrix inputMatrix. \n";
-        s3 = "inputMatrix must be a square matrix \n";
-        s4 = s1 + s2 + s3;
-        return s4;
+        return "int[][] flipMethod(int[][] inputMatrix) method \nof FlipRelToMainDiag class returns matrix, \n" +
+                "flipped relative to main diagonal of matrix inputMatrix. \n" +
+                "inputMatrix must be a square matrix \n";
     }
 }

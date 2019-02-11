@@ -16,10 +16,7 @@ public class FlipHorizontally implements UserFlip {
     }
 
     public String getDescription() {
-        String s1, s2, s3;
-        s1 = "int[][] flipMethod(int[][] inputMatrix) method of FlipHorizontally class returns matrix, \n";
-        s2 = "flipped horizontally, inputMatrix must be a square matrix \n";
-        s3 = s1 + s2;
-        return s3;
+        return "int[][] flipMethod(int[][] inputMatrix) method of FlipHorizontally class returns matrix, \n " +
+                "flipped horizontally, inputMatrix must be a square matrix \n ";
     }
 }
