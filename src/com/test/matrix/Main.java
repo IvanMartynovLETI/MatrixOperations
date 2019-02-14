@@ -28,8 +28,7 @@ public class Main {
             algorithms.add(new UserClass());
 
             int dim = checkInput(args);
-            GenerateRandomMatrix genObj = new GenerateRandomMatrix();
-            genObj.dim = dim;
+            GenerateRandomMatrix genObj = new GenerateRandomMatrix(dim);
             GenerateMatrix genRef = genObj;
             Calculator CObj = new Calculator();
             CObj.calculate(algorithms, genObj);

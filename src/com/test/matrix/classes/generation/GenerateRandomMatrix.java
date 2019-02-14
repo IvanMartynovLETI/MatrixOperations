@@ -3,7 +3,12 @@ package com.test.matrix.classes.generation;
 import com.test.matrix.interfaces.GenerateMatrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
-    public int dim;
+    private int dim;
+
+    public GenerateRandomMatrix(int i) {
+        dim = i;
+    }
+
     public int[][] generateMatrix(){
         boolean generationOK=true;
         int dimension=0;
