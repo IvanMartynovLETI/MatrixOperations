@@ -29,7 +29,7 @@ public class Main {
 
             int dim = checkInput(args);
             GenerateRandomMatrix genObj = new GenerateRandomMatrix();
-            genObj.setDim(dim);
+            genObj.dim = dim;
             GenerateMatrix genRef = genObj;
             Calculator CObj = new Calculator();
             CObj.calculate(algorithms, genObj);

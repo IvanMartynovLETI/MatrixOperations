@@ -3,8 +3,8 @@ package com.test.matrix.classes.generation;
 import com.test.matrix.interfaces.GenerateMatrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
-    private int dim;
-    public int[][] generateMatrix(int dim){
+    public int dim;
+    public int[][] generateMatrix(){
         boolean generationOK=true;
         int dimension=0;
         int[][] randMatrix;
@@ -49,13 +49,5 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         return "int[][] generateMatrix(int dim) method of GenerateRandomMatrix class\n" +
                 "creates square random matrix dimension of dim,\n" +
                 "dim parameter must be positive integer greater than 1.";
-    }
-
-    public void setDim(int d) {
-        dim=d;
-    }
-
-    public int getDim() {
-        return dim;
     }
 }

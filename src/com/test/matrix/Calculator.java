@@ -8,7 +8,8 @@ import java.util.List;
 public class Calculator {
     public int[][] calculate(List<UserFlip> algs, GenerateMatrix genM) {
         try {
-            int[][] matrix = genM.generateMatrix(genM.getDim());
+
+            int[][] matrix = genM.generateMatrix();
             DisplayMatrix dObj = new DisplayMatrix();
             System.out.println("Initial matrix is");
             dObj.displayMatrix(matrix);
