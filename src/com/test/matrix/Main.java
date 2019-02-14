@@ -28,10 +28,10 @@ public class Main {
             algorithms.add(new UserClass());
 
             int dim = checkInput(args);
-            GenerateRandomMatrix genObj = new GenerateRandomMatrix(dim);
-            GenerateMatrix genRef = genObj;
+
+            GenerateMatrix genRef = new GenerateRandomMatrix(dim);
             Calculator CObj = new Calculator();
-            CObj.calculate(algorithms, genObj);
+            CObj.calculate(algorithms, genRef);
 
 
         } catch (IllegalArgumentException e) {
