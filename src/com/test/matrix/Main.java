@@ -6,6 +6,7 @@ import com.test.matrix.classes.flip.FlipRelToMainDiag;
 import com.test.matrix.classes.flip.FlipRelToSecDiag;
 import com.test.matrix.classes.flip.FlipVertically;
 import com.test.matrix.classes.generation.GenerateRandomMatrix;
+import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
 
@@ -14,9 +15,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-
         try {
-
             UserFlip ufRef = new FlipVertically();
 
             ArrayList<UserFlip> algorithms = new ArrayList<UserFlip>();
@@ -25,13 +24,15 @@ public class Main {
             algorithms.add(new FlipVertically());
             algorithms.add(new FlipRelToMainDiag());
             algorithms.add(new FlipRelToSecDiag());
-            algorithms.add(new UserClass());
 
             int dim = checkInput(args);
 
-            GenerateMatrix genRef = new GenerateRandomMatrix(dim);
+            GenerateMatrix gRef = new GenerateRandomMatrix(dim);
+
             Calculator CObj = new Calculator();
-            CObj.calculate(algorithms, genRef);
+            CObj.configure(algorithms, gRef);
+
+            new DisplayMatrix().displayMatrix(CObj.calculate());
 
 
         } catch (IllegalArgumentException e) {
@@ -55,4 +56,3 @@ public class Main {
         }
     }
 }
-
