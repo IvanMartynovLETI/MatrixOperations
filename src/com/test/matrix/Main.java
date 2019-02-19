@@ -28,13 +28,11 @@ public class Main {
             int dim = checkInput(args);
 
             GenerateMatrix gRef = new GenerateRandomMatrix(dim);
-
-            Calculator CObj = new Calculator();
-            CObj.configure(algorithms, gRef);
-
+            Calculator CObj = new Calculator(gRef);
+            CObj.addCmdList(algorithms);
+            CObj.addCmd(new UserClass());
+            System.out.println("Result is");
             new DisplayMatrix().displayMatrix(CObj.calculate());
-
-
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
         }

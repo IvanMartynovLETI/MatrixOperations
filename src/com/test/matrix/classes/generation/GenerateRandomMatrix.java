@@ -8,50 +8,47 @@ public class GenerateRandomMatrix implements GenerateMatrix {
 
 
     public GenerateRandomMatrix(int i) {
-        if(i == 0) {
+        if (i == 0) {
             generationOK = false;
             throw new IllegalArgumentException("Empty array, constructor of GenerateRandomMatrix class failed");
-        }
-        else if (i < 0) {
+        } else if (i < 0) {
             generationOK = false;
             throw new IllegalArgumentException("Dimension must be positive, " +
                     " constructor of GenerateRandomMatrix class failed");
-        }
-        else if (i < 2 || i > 100) {
+        } else if (i < 2 || i > 100) {
             generationOK = false;
             throw new IllegalArgumentException("Dimension must be in range from 2 to 100, " +
                     "constructor of GenerateRandomMatrix class failed");
-        }
-        else{
+        } else {
             dim = i;
             generationOK = true;
         }
     }
 
-    public int[][] generateMatrix(){
+    public int[][] generateMatrix() {
         try {
-            if( (dim == 0) && (generationOK==false)) throw new IllegalArgumentException("Incorrect dimension value " +
+            if ((dim == 0) && (generationOK == false)) throw new IllegalArgumentException("Incorrect dimension value" +
                     " in generateMatrix() method received");
             int[][] randMatrix;
-            randMatrix=new int[dim][dim];
+            randMatrix = new int[dim][dim];
 
-            for(int i=0; i<dim; i++)
-                for(int j=0; j<dim; j++){
-                    if(generationOK)
-                        randMatrix[i][j]=(int)(Math.random()*100);
+            for (int i = 0; i < dim; i++)
+                for (int j = 0; j < dim; j++) {
+                    if (generationOK)
+                        randMatrix[i][j] = (int) (Math.random() * 100);
                     else
-                        randMatrix[i][j]=0;
+                        randMatrix[i][j] = 0;
                 }
 
 
             return randMatrix;
         } catch (IllegalArgumentException e) {
-            System.out.println(" Incorrect dimension value");
+            System.out.println("Incorrect dimension value");
             throw new IllegalArgumentException("Incorrect dimension value in generateMatrix() method received");
         }
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return "int[][] generateMatrix(int dim) method of GenerateRandomMatrix class\n" +
                 "creates square random matrix dimension of dim,\n" +
                 "dim parameter must be positive integer greater than 1.";
