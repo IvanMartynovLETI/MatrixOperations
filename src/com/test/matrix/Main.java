@@ -26,6 +26,9 @@ public class Main {
             algorithms.add(new FlipRelToMainDiag());
             algorithms.add(new FlipRelToSecDiag());
 
+            algorithms.add(new UserClass());
+            algorithms.add(new UserClass());
+
             int dim = checkInput(args);
 
             GenerateMatrix gRef = new GenerateRandomMatrix(dim);
@@ -35,6 +38,15 @@ public class Main {
 
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
+
+            ArrayList<UserFlip> algorithms1 = new ArrayList<UserFlip>();
+            algorithms1.add(new UserClass());
+            algorithms1.add(new UserClass());
+
+            CObj.addCmdList(algorithms1);
+
+            CObj.addCmd(new UserClass());
+
             System.out.println("Result is");
             DObj.displayMatrix(CObj.calculate());
         } catch (IllegalArgumentException e) {
