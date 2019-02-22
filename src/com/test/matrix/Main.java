@@ -16,6 +16,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
+            DisplayMatrix DObj = new DisplayMatrix();
             UserFlip ufRef = new FlipVertically();
 
             ArrayList<UserFlip> algorithms = new ArrayList<UserFlip>();
@@ -29,10 +30,13 @@ public class Main {
 
             GenerateMatrix gRef = new GenerateRandomMatrix(dim);
             Calculator CObj = new Calculator(gRef);
+            System.out.println("Initial matrix is");
+            DObj.displayMatrix(CObj.getInitMatrix());
+
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
             System.out.println("Result is");
-            new DisplayMatrix().displayMatrix(CObj.calculate());
+            DObj.displayMatrix(CObj.calculate());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
         }
