@@ -19,7 +19,7 @@ public class Calculator {
         ufList.add(cmd);
     }
 
-    public int[][] calculate(int[][] initMatrix) {
+    public int[][] calculate(int[][] initMatrix) {//в конце концов, исходную матрицу можно брать откуда угодно
         resMatrix = initMatrix;
         for (UserFlip userFlip : ufList) {
             resMatrix = userFlip.flipMethod(resMatrix);
