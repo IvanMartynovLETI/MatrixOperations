@@ -20,7 +20,7 @@ public class Main {
             UserFlip ufRef = new FlipVertically();
 
             ArrayList<UserFlip> algorithms = new ArrayList<UserFlip>();
-            algorithms.add(new FlipHorizontally());
+            //algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipVertically());
             algorithms.add(new FlipRelToMainDiag());
@@ -51,6 +51,10 @@ public class Main {
             DObj.displayMatrix(CObj.calculate());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
+        }
+
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         }
     }
 

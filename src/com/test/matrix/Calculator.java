@@ -15,16 +15,8 @@ public class Calculator {
         resMatrix = initMatrix;
     }
 
-    public void addCmdList(ArrayList<UserFlip> algs) {
-        if (algs.size() != 0) {
-            ArrayList<UserFlip> tmpList = new ArrayList<UserFlip>();
-            tmpList = ufList;
-
-            for (int i = 0; i < algs.size(); i++)
-                tmpList.add(algs.get(i));
-            ufList = tmpList;
-        }
-
+    public void addCmdList(ArrayList<UserFlip> algs) throws NullPointerException {
+        ufList.addAll(algs);
     }
 
     public void addCmd(UserFlip cmd) {
