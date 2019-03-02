@@ -31,10 +31,11 @@ public class Main {
 
             int dim = checkInput(args);
 
-            GenerateMatrix gRef = new GenerateRandomMatrix(dim);
-            Calculator CObj = new Calculator(gRef);
+            GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
+            int[][] initRandMatrix = GObj.generateMatrix();
+            Calculator CObj = new Calculator();
             System.out.println("Initial matrix is");
-            DObj.displayMatrix(CObj.getInitMatrix());
+            DObj.displayMatrix(initRandMatrix);
 
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
@@ -48,13 +49,9 @@ public class Main {
             CObj.addCmd(new UserClass());
 
             System.out.println("Result is");
-            DObj.displayMatrix(CObj.calculate());
+            DObj.displayMatrix(CObj.calculate(initRandMatrix));
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
-        }
-
-        catch (NullPointerException e) {
-            System.out.println(e.getMessage());
         }
     }
 
