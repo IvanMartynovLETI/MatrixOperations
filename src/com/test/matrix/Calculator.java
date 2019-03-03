@@ -19,8 +19,8 @@ public class Calculator {
         ufList.add(cmd);
     }
 
-    public int[][] calculate(int[][] initMatrix) {//в конце концов, исходную матрицу можно брать откуда угодно
-        resMatrix = initMatrix;
+    public int[][] calculate(GenerateMatrix GMR) {
+        resMatrix = GMR.getMatrix();
         for (UserFlip userFlip : ufList) {
             resMatrix = userFlip.flipMethod(resMatrix);
         }

@@ -4,6 +4,7 @@ import com.test.matrix.interfaces.GenerateMatrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
     private int dim = 0;
+    private int[][] randMatrix;
 
     public GenerateRandomMatrix(int i) throws IllegalArgumentException {
         if (i == 0) {
@@ -20,13 +21,16 @@ public class GenerateRandomMatrix implements GenerateMatrix {
     }
 
     public int[][] generateMatrix() {
-        int[][] randMatrix;
         randMatrix = new int[dim][dim];
 
         for (int i = 0; i < dim; i++)
             for (int j = 0; j < dim; j++) {
                     randMatrix[i][j] = (int) (Math.random() * 100);
             }
+        return randMatrix;
+    }
+
+    public int[][] getMatrix() {
         return randMatrix;
     }
 
