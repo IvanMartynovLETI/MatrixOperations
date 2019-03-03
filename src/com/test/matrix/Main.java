@@ -32,12 +32,9 @@ public class Main {
             int dim = checkInput(args);
 
             GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
-            int[][] initRandMatrix = GObj.generateMatrix();
+
             GenerateMatrix GRef = GObj;
             Calculator CObj = new Calculator();
-            System.out.println("Initial matrix is");
-            DObj.displayMatrix(initRandMatrix);
-
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
 
@@ -51,6 +48,8 @@ public class Main {
 
             System.out.println("Result is");
             DObj.displayMatrix(CObj.calculate(GRef));
+            System.out.println("Initial matrix is");
+            DObj.displayMatrix(GObj.getMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
         }

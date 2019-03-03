@@ -20,7 +20,7 @@ public class Calculator {
     }
 
     public int[][] calculate(GenerateMatrix GMR) {
-        resMatrix = GMR.getMatrix();
+        resMatrix = GMR.generateMatrix();
         for (UserFlip userFlip : ufList) {
             resMatrix = userFlip.flipMethod(resMatrix);
         }
