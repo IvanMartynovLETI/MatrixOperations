@@ -1,6 +1,6 @@
 package com.test.matrix.interfaces;
 
 public interface ShowMatrix {
-    void displayMatrix (int[][] m);
+    void displayMatrix (Matrix MRef);
     String getDescription();
 }

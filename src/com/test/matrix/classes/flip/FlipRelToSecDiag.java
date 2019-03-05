@@ -1,23 +1,31 @@
 package com.test.matrix.classes.flip;
 
+import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
-public class FlipRelToSecDiag implements UserFlip {
+public class FlipRelToSecDiag implements UserFlip, Matrix {
+    private int[][] outputMatrix;
 
-    public int[][] flipMethod(int[][] inputMatrix) {
-        //flip matrix previously generated relative to secondary diagonal
-        int[][] outputMatrix = new int[inputMatrix.length][inputMatrix[0].length];
+    public Matrix flipMethod(Matrix MRef)
+    {
+        outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];
 
-        for (int i = 0; i < inputMatrix.length; i++) {
-            for (int j = 0; j < inputMatrix[0].length; j++)
-                outputMatrix[i][j] = inputMatrix[inputMatrix[0].length - 1 - j][inputMatrix.length - 1 - i];
-        }
+        for(int i=0; i<MRef.getNative().length; i++)
+            for(int j=0; j<MRef.getNative()[0].length; j++)
+                outputMatrix[i][j]=MRef.getNative()[MRef.getNative()[0].length-1-j][MRef.getNative().length-1-i];
+
+        Matrix MREfOut = this;
+
+        return MREfOut;
+    }
+
+    public int[][] getNative() {
         return outputMatrix;
     }
 
-    public String getDescription() {
-        return "int[][] flipMethod(int[][] inputMatrix) method \nof FlipRelToSecDiag class returns matrix, \n" +
-                "flipped relative to secondary diagonal of matrix inputMatrix. \n" +
-                "inputMatrix must be a square matrix \n";
+    public String getDescription(){
+        return "Matrix flipMethod(Matrix MRef) method of FlipRelToSecDiag class returns reference to matrix,\n" +
+                "flipped relative to secondary diagonal, input matrix must be square one\n";
     }
 }
+

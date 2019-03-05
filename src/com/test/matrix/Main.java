@@ -20,7 +20,7 @@ public class Main {
             UserFlip ufRef = new FlipVertically();
 
             ArrayList<UserFlip> algorithms = new ArrayList<UserFlip>();
-            //algorithms.add(new FlipHorizontally());
+            algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipVertically());
             algorithms.add(new FlipRelToMainDiag());

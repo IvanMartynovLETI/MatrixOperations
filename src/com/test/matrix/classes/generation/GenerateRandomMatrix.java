@@ -1,10 +1,12 @@
 package com.test.matrix.classes.generation;
 
 import com.test.matrix.interfaces.GenerateMatrix;
+import com.test.matrix.interfaces.Matrix;
 
-public class GenerateRandomMatrix implements GenerateMatrix {
+public class GenerateRandomMatrix implements GenerateMatrix, Matrix {
     private int dim = 0;
     private int[][] randMatrix;
+    private Matrix MRefOut;
 
     public GenerateRandomMatrix(int i) throws IllegalArgumentException {
         if (i == 0) {
@@ -20,22 +22,27 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         }
     }
 
-    public int[][] generateMatrix() {
+    public Matrix generateMatrix() {
         randMatrix = new int[dim][dim];
 
         for (int i = 0; i < dim; i++)
             for (int j = 0; j < dim; j++) {
-                    randMatrix[i][j] = (int) (Math.random() * 100);
+                randMatrix[i][j] = (int) (Math.random() * 100);
             }
+        MRefOut = this;
+        return MRefOut;
+    }
+
+    public int[][] getNative() {
         return randMatrix;
     }
 
-    public int[][] getMatrix() {
-        return randMatrix;
+    public Matrix getMatrix() {
+        return MRefOut;
     }
 
     public String getDescription() {
-        return "int[][] generateMatrix(int dim) method of GenerateRandomMatrix class\n" +
+        return "Matrix generateMatrix(int dim) method of GenerateRandomMatrix class\n" +
                 "creates square random matrix dimension of dim,\n" +
                 "dim parameter must be positive integer greater than 1.";
     }

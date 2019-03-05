@@ -1,9 +1,10 @@
 package com.test.matrix.interfaces;
 
 public interface GenerateMatrix {
-    int[][] generateMatrix ();
-    int[][] getMatrix();
-
+    Matrix generateMatrix ();
+    int[][] getNative();
+    Matrix getMatrix();
     String getDescription();
 
 }
+

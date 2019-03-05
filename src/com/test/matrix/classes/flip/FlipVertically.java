@@ -1,22 +1,28 @@
 package com.test.matrix.classes.flip;
 
+import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
-public class FlipVertically implements UserFlip {
+public class FlipVertically implements UserFlip, Matrix {
+    private int[][] outputMatrix;
 
-    public int[][] flipMethod(int[][] m) {
-        //flips matrix previously generated vertically
-        int[][] resultMatrix = new int[m.length][m[0].length];
+    public Matrix flipMethod(Matrix MRef)
+    {
+        outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];
 
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[0].length; j++)
-                resultMatrix[i][j] = m[i][m[0].length - 1 - j];
-        }
-        return resultMatrix;
+        for(int i=0; i<MRef.getNative().length; i++)
+            for(int j=0; j<MRef.getNative()[0].length; j++)
+                outputMatrix[i][j]=MRef.getNative()[i][MRef.getNative()[0].length-1-j];
+
+        Matrix MRefOut = this;
+        return MRefOut;
     }
 
-    public String getDescription() {
-        return "int[][] flipMethod(int[][] inputMatrix) method of FlipVertically class returns matrix, \n" +
-                "flipped vertically, inputMatrix must be a square matrix \n";
+    public int[][] getNative() {return outputMatrix;}
+
+    public String getDescription(){
+        return "Matrix flipMethod(Matrix MRef) method of FlipVertically class returns reference to matrix,\n" +
+                "flipped vertically, input matrix must be square one\n";
     }
 }
+

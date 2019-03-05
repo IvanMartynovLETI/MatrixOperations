@@ -1,15 +1,13 @@
 package com.test.matrix;
 
 import com.test.matrix.interfaces.GenerateMatrix;
+import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
 import java.util.ArrayList;
 
 public class Calculator {
-    private int[][] resMatrix;
     private ArrayList<UserFlip> ufList = new ArrayList<UserFlip>();
-
-
 
     public void addCmdList(ArrayList<UserFlip> algs) {
         ufList.addAll(algs);
@@ -19,13 +17,14 @@ public class Calculator {
         ufList.add(cmd);
     }
 
-    public int[][] calculate(GenerateMatrix GMR) {
-        resMatrix = GMR.generateMatrix();
+    public Matrix calculate(GenerateMatrix GMR) {
+        GMR.generateMatrix();
+        Matrix MRef = GMR.getMatrix();
+
         for (UserFlip userFlip : ufList) {
-            resMatrix = userFlip.flipMethod(resMatrix);
+            MRef = userFlip.flipMethod(MRef);
         }
-        return resMatrix;
+        return MRef;
     }
-
-
 }
+
