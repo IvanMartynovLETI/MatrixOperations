@@ -24,8 +24,8 @@ public class Calculator {
     }
 
     public Matrix calculate() {
-        GMRef.generateMatrix();
-        MRef = GMRef.getMatrix();
+
+        MRef = GMRef.generateMatrix();
         for (UserFlip userFlip : ufList) {
             MRef = userFlip.flipMethod(MRef);
         }
