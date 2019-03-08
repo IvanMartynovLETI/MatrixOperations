@@ -3,8 +3,14 @@ package com.test.matrix.classes.flip;
 import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
-public class FlipRelToSecDiag implements UserFlip, Matrix {
+public class FlipRelToSecDiag implements UserFlip {
     private int[][] outputMatrix;
+
+    Matrix MR = new Matrix() {
+        public int[][] getNative() {
+            return outputMatrix;
+        }
+    };
 
     public Matrix flipMethod(Matrix MRef)
     {
@@ -14,13 +20,7 @@ public class FlipRelToSecDiag implements UserFlip, Matrix {
             for(int j=0; j<MRef.getNative()[0].length; j++)
                 outputMatrix[i][j]=MRef.getNative()[MRef.getNative()[0].length-1-j][MRef.getNative().length-1-i];
 
-        Matrix MREfOut = this;
-
-        return MREfOut;
-    }
-
-    public int[][] getNative() {
-        return outputMatrix;
+        return this.MR;
     }
 
     public String getDescription(){

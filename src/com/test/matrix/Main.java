@@ -34,7 +34,7 @@ public class Main {
             GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
 
             GenerateMatrix GRef = GObj;
-            Calculator CObj = new Calculator();
+            Calculator CObj = new Calculator(GRef);
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
 
@@ -47,7 +47,7 @@ public class Main {
             CObj.addCmd(new UserClass());
 
             System.out.println("Result is");
-            DObj.displayMatrix(CObj.calculate(GRef));
+            DObj.displayMatrix(CObj.calculate());
             System.out.println("Initial matrix is");
             DObj.displayMatrix(GObj.getMatrix());
         } catch (IllegalArgumentException e) {

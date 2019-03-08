@@ -4,6 +4,8 @@ import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.ShowMatrix;
 
 public class DisplayMatrix implements ShowMatrix{
+
+
     public void displayMatrix(Matrix MRef)
     {
         int[][] m = MRef.getNative();

@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 public class Calculator {
     private ArrayList<UserFlip> ufList = new ArrayList<UserFlip>();
+    private Matrix MRef;
+
+    public Calculator(GenerateMatrix GMR) {
+        GMR.generateMatrix();
+        MRef = GMR.getMatrix();
+    }
 
     public void addCmdList(ArrayList<UserFlip> algs) {
         ufList.addAll(algs);
@@ -17,10 +23,7 @@ public class Calculator {
         ufList.add(cmd);
     }
 
-    public Matrix calculate(GenerateMatrix GMR) {
-        GMR.generateMatrix();
-        Matrix MRef = GMR.getMatrix();
-
+    public Matrix calculate() {
         for (UserFlip userFlip : ufList) {
             MRef = userFlip.flipMethod(MRef);
         }
