@@ -4,23 +4,29 @@ import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
 public class FlipVertically implements UserFlip {
-    private int[][] outputMatrix;
+    //private int[][] outputMatrix;
 
-    Matrix MR = new Matrix() {
+    /*Matrix MR = new Matrix() {
         public int[][] getNative() {
             return outputMatrix;
         }
-    };
+    };*/
 
     public Matrix flipMethod(Matrix MRef)
     {
-        outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];
+        int[][] outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];
 
         for(int i=0; i<MRef.getNative().length; i++)
             for(int j=0; j<MRef.getNative()[0].length; j++)
                 outputMatrix[i][j]=MRef.getNative()[i][MRef.getNative()[0].length-1-j];
 
-        return this.MR;
+        Matrix MR = new Matrix() {
+            public int[][] getNative() {
+                return outputMatrix;
+            }
+        };
+
+        return MR;
     }
 
     public String getDescription(){

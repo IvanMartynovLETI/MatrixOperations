@@ -39,9 +39,9 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         return MRefOut;
     }
 
-    public Matrix getMatrix() {
+    /*public Matrix getMatrix() {
         return MRefOut;
-    }
+    }*/
 
 
 

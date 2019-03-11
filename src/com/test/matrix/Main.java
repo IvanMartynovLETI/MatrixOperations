@@ -5,15 +5,17 @@ import com.test.matrix.classes.flip.FlipHorizontally;
 import com.test.matrix.classes.flip.FlipRelToMainDiag;
 import com.test.matrix.classes.flip.FlipRelToSecDiag;
 import com.test.matrix.classes.flip.FlipVertically;
-import com.test.matrix.classes.generation.GenerateRandomMatrix;
+import com.test.matrix.classes.generation.ExtractMatrix;
 import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
 
         try {
             DisplayMatrix DObj = new DisplayMatrix();
@@ -31,9 +33,9 @@ public class Main {
 
             int dim = checkInput(args);
 
-            GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
-
-            GenerateMatrix GRef = GObj;
+            //GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
+            ExtractMatrix EMObj = new ExtractMatrix("K:/shared folder/1.txt");
+            GenerateMatrix GRef = EMObj;
             Calculator CObj = new Calculator(GRef);
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
@@ -49,9 +51,11 @@ public class Main {
             System.out.println("Result is");
             DObj.displayMatrix(CObj.calculate());
             System.out.println("Initial matrix is");
-            DObj.displayMatrix(GObj.getMatrix());
+            DObj.displayMatrix(CObj.getInitialMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
