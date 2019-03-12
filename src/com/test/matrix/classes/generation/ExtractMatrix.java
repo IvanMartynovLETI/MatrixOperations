@@ -63,3 +63,4 @@ public class ExtractMatrix implements GenerateMatrix {
                 "matrix in file should be square one";
     }
 }
+//
