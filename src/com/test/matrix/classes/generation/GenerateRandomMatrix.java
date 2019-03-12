@@ -39,12 +39,6 @@ public class GenerateRandomMatrix implements GenerateMatrix {
         return MRefOut;
     }
 
-    /*public Matrix getMatrix() {
-        return MRefOut;
-    }*/
-
-
-
     public String getDescription() {
         return "Matrix generateMatrix(int dim) method of GenerateRandomMatrix class\n" +
                 "creates square random matrix dimension of dim,\n" +

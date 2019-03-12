@@ -5,15 +5,6 @@ import com.test.matrix.interfaces.UserFlip;
 
 public class FlipHorizontally implements UserFlip {
 
-    //private int[][] outputMatrix;
-
-    /*Matrix MR = new Matrix() {
-        public int[][] getNative() {
-            return outputMatrix;
-        }
-    };*/
-
-
     public Matrix flipMethod(Matrix MRef)
     {
         int[][] outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];

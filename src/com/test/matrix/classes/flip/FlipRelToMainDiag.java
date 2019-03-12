@@ -4,13 +4,6 @@ import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
 public class FlipRelToMainDiag implements UserFlip {
-    //private int[][] outputMatrix;
-
-    /*Matrix MR = new Matrix() {
-        public int[][] getNative() {
-            return outputMatrix;
-        }
-    };*/
 
     public Matrix flipMethod(Matrix MRef)
     {

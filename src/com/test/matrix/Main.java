@@ -11,6 +11,8 @@ import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Main {
@@ -33,8 +35,9 @@ public class Main {
 
             int dim = checkInput(args);
 
-            //GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
-            ExtractMatrix EMObj = new ExtractMatrix("K:/shared folder/1.txt");
+            String strPath="K:/shared folder/1.txt";
+            Path path = Paths.get(strPath);
+            ExtractMatrix EMObj = new ExtractMatrix(path);
             GenerateMatrix GRef = EMObj;
             Calculator CObj = new Calculator(GRef);
             CObj.addCmdList(algorithms);

@@ -11,20 +11,23 @@ import java.nio.file.Paths;
 public class ExtractMatrix implements GenerateMatrix {
     private Scanner StrScanner;
 
-    public ExtractMatrix(String filePath) throws IOException{
+    public ExtractMatrix(String filePath) throws IOException {
         Path path = Paths.get(filePath);
+        StrScanner = new Scanner(path);
+    }
+
+    public ExtractMatrix(Path path) throws IOException {
         StrScanner = new Scanner(path);
     }
 
     public Matrix generateMatrix() throws IllegalArgumentException {
         ArrayList<String> list = new ArrayList<String>();
-        StrScanner.useDelimiter(System.getProperty("line.separator"));
 
-        while(StrScanner.hasNext())
-            list.add(StrScanner.next());
+        while(StrScanner.hasNextLine())
+            list.add(StrScanner.nextLine());
 
+        StrScanner.close();
         int dimY = list.size();
-
         Scanner ElemsScanner;
 
         int[][] array = new int[dimY][dimY];
@@ -38,6 +41,9 @@ public class ExtractMatrix implements GenerateMatrix {
                 array[i][j] = ElemsScanner.nextInt();
 
             }
+
+            ElemsScanner.close();
+
             if(j != dimY)
                 throw new IllegalArgumentException("matrix in file is not square");
         }
