@@ -4,10 +4,10 @@ import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
 
 public class GenerateRandomMatrix implements GenerateMatrix {
-    private int dim = 0;
+    private int dim;
     private int[][] randMatrix;
 
-    Matrix MRef = new Matrix() {
+    private Matrix MRef = new Matrix() {
         public int[][] getNative() {
             return randMatrix;
         }

@@ -9,8 +9,6 @@ import com.test.matrix.classes.generation.ExtractMatrix;
 import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
-
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -21,9 +19,8 @@ public class Main {
 
         try {
             DisplayMatrix DObj = new DisplayMatrix();
-            UserFlip ufRef = new FlipVertically();
 
-            ArrayList<UserFlip> algorithms = new ArrayList<UserFlip>();
+            ArrayList<UserFlip> algorithms = new ArrayList<>();
             algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipHorizontally());
             algorithms.add(new FlipVertically());
@@ -33,17 +30,16 @@ public class Main {
             algorithms.add(new UserClass());
             algorithms.add(new UserClass());
 
-            int dim = checkInput(args);
+            //int dim = checkInput(args);
 
             String strPath="K:/shared folder/1.txt";
             Path path = Paths.get(strPath);
-            ExtractMatrix EMObj = new ExtractMatrix(path);
-            GenerateMatrix GRef = EMObj;
+            GenerateMatrix GRef = new ExtractMatrix(path);
             Calculator CObj = new Calculator(GRef);
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
 
-            ArrayList<UserFlip> algorithms1 = new ArrayList<UserFlip>();
+            ArrayList<UserFlip> algorithms1 = new ArrayList<>();
             algorithms1.add(new UserClass());
             algorithms1.add(new UserClass());
 
@@ -57,12 +53,10 @@ public class Main {
             DObj.displayMatrix(CObj.getInitialMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
         }
     }
 
-    private static int checkInput(String[] strArr) {
+    /*private static int checkInput(String[] strArr) {
         if (strArr.length == 0) {
             throw new IllegalArgumentException("Empty dimension");
         }
@@ -76,5 +70,5 @@ public class Main {
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("Dimension must be an integer");
         }
-    }
+    }*/
 }

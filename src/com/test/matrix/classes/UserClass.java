@@ -7,20 +7,12 @@ public class UserClass implements UserFlip {
 
     public Matrix flipMethod(Matrix MRef)
     {
-        int[][] outputMatrix=new int[MRef.getNative().length][MRef.getNative()[0].length];
-
-        final int[][] outputMatrix1 = outputMatrix;
+        final int[][] outputMatrix1 = new int[MRef.getNative().length][MRef.getNative()[0].length];
         for(int i = 0; i<MRef.getNative().length; i++)
             for(int j=0; j<MRef.getNative()[0].length; j++)
                 outputMatrix1[i][j]=MRef.getNative()[i][j]+1;
 
-            Matrix MR = new Matrix() {
-                public int[][] getNative() {
-                    return outputMatrix1;
-                }
-            };
-
-        return MR;
+        return () -> outputMatrix1;
     }
 
     public String getDescription()

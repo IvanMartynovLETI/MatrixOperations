@@ -1,4 +1,5 @@
 package com.test.matrix.classes.generation;
+
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
 
@@ -9,53 +10,58 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ExtractMatrix implements GenerateMatrix {
-    private Scanner StrScanner;
+    private Path path;
 
-    public ExtractMatrix(String filePath) throws IOException {
-        Path path = Paths.get(filePath);
-        StrScanner = new Scanner(path);
+    public ExtractMatrix(String filePath) {
+        path = Paths.get(filePath);
     }
 
-    public ExtractMatrix(Path path) throws IOException {
-        StrScanner = new Scanner(path);
+    public ExtractMatrix(Path pathToFile) {
+        path = pathToFile;
     }
 
-    public Matrix generateMatrix() throws IllegalArgumentException {
-        ArrayList<String> list = new ArrayList<String>();
+    public Matrix generateMatrix() {
+        Scanner strScanner = null;
+        Scanner elemsScanner = null;
 
-        while(StrScanner.hasNextLine())
-            list.add(StrScanner.nextLine());
+        try {
+            ArrayList<String> list = new ArrayList<>();
+            strScanner = new Scanner(path);
 
-        StrScanner.close();
-        int dimY = list.size();
-        Scanner ElemsScanner;
+            while (strScanner.hasNextLine())
+                list.add(strScanner.nextLine());
 
-        int[][] array = new int[dimY][dimY];
+            int dimY = list.size();
+            int[][] array = new int[dimY][dimY];
 
-        for(int i = 0; i < dimY; i ++)
-        {
-            ElemsScanner = new Scanner(list.get(i));
-            int j = 0;
-            for(; ElemsScanner.hasNextInt(); j ++)
-            {
-                array[i][j] = ElemsScanner.nextInt();
+            for (int i = 0; i < dimY; i++) {
+                elemsScanner = new Scanner(list.get(i));
+                int j = 0;
 
+                for (; elemsScanner.hasNextInt(); j++)
+                    array[i][j] = elemsScanner.nextInt();
+
+                if (j != dimY)
+                    throw new IllegalArgumentException("Matrix in file is not square");
             }
 
-            ElemsScanner.close();
+            return () -> array;
 
-            if(j != dimY)
-                throw new IllegalArgumentException("matrix in file is not square");
+        } catch (IOException ex) {
+            System.out.println("Could not open file");
+            System.out.println(ex.getMessage());
+        } finally {
+            if(strScanner != null)
+                strScanner.close();
+
+            if(elemsScanner != null)
+                elemsScanner.close();
+
+
         }
-
-        Matrix MR = new Matrix() {
-            public int[][] getNative() {
-                return array;
-            }
-        };
-
-        return MR;
+        return null;
     }
+
 
     public String getDescription() {
         return "Matrix generateMatrix() method of ExtractMatrix class\n" +

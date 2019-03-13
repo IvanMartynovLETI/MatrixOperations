@@ -13,13 +13,7 @@ public class FlipRelToSecDiag implements UserFlip {
             for(int j=0; j<MRef.getNative()[0].length; j++)
                 outputMatrix[i][j]=MRef.getNative()[MRef.getNative()[0].length-1-j][MRef.getNative().length-1-i];
 
-        Matrix MR = new Matrix() {
-            public int[][] getNative() {
-                return outputMatrix;
-            }
-        };
-
-        return MR;
+        return () -> outputMatrix;
     }
 
     public String getDescription(){

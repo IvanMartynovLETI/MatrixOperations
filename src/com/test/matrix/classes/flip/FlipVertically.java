@@ -13,13 +13,7 @@ public class FlipVertically implements UserFlip {
             for(int j=0; j<MRef.getNative()[0].length; j++)
                 outputMatrix[i][j]=MRef.getNative()[i][MRef.getNative()[0].length-1-j];
 
-        Matrix MR = new Matrix() {
-            public int[][] getNative() {
-                return outputMatrix;
-            }
-        };
-
-        return MR;
+        return () -> outputMatrix;
     }
 
     public String getDescription(){
