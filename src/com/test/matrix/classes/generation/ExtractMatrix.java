@@ -3,7 +3,8 @@ package com.test.matrix.classes.generation;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
 
-import java.io.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.nio.file.Path;
@@ -20,13 +21,12 @@ public class ExtractMatrix implements GenerateMatrix {
         path = pathToFile;
     }
 
-    public Matrix generateMatrix() {
-        Scanner strScanner = null;
-        Scanner elemsScanner = null;
+    public Matrix generateMatrix() throws IOException {
+        Scanner strScanner = new Scanner(path);
 
         try {
             ArrayList<String> list = new ArrayList<>();
-            strScanner = new Scanner(path);
+
 
             while (strScanner.hasNextLine())
                 list.add(strScanner.nextLine());
@@ -35,31 +35,24 @@ public class ExtractMatrix implements GenerateMatrix {
             int[][] array = new int[dimY][dimY];
 
             for (int i = 0; i < dimY; i++) {
-                elemsScanner = new Scanner(list.get(i));
+                Scanner elemsScanner = new Scanner(list.get(i));
                 int j = 0;
 
                 for (; elemsScanner.hasNextInt(); j++)
                     array[i][j] = elemsScanner.nextInt();
+
+                elemsScanner.close();
 
                 if (j != dimY)
                     throw new IllegalArgumentException("Matrix in file is not square");
             }
 
             return () -> array;
-
-        } catch (IOException ex) {
-            System.out.println("Could not open file");
-            System.out.println(ex.getMessage());
         } finally {
             if(strScanner != null)
                 strScanner.close();
-
-            if(elemsScanner != null)
-                elemsScanner.close();
-
-
         }
-        return null;
+
     }
 
 

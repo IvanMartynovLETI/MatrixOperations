@@ -9,6 +9,8 @@ import com.test.matrix.classes.generation.ExtractMatrix;
 import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
+
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -53,7 +55,11 @@ public class Main {
             DObj.displayMatrix(CObj.getInitialMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
+        } catch(IOException ex) {
+            System.out.println(ex.getMessage());
         }
+
+
     }
 
     /*private static int checkInput(String[] strArr) {
