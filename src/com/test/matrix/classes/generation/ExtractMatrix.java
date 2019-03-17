@@ -23,10 +23,12 @@ public class ExtractMatrix implements GenerateMatrix {
     }
 
     public Matrix generateMatrix() {
-        
+        Scanner strScanner = new Scanner("initial string");
+        Scanner elemsScanner = new Scanner("initial string");
+
         try {
             ArrayList<String> list = new ArrayList<>();
-            Scanner strScanner = new Scanner(path);
+            strScanner = new Scanner(path);
 
             while (strScanner.hasNextLine())
                 list.add(strScanner.nextLine());
@@ -35,7 +37,7 @@ public class ExtractMatrix implements GenerateMatrix {
             int[][] array = new int[dimY][dimY];
 
             for (int i = 0; i < dimY; i++) {
-                Scanner elemsScanner = new Scanner(list.get(i));
+                elemsScanner = new Scanner(list.get(i));
                 int j = 0;
 
                 for (; elemsScanner.hasNextInt(); j++)
@@ -54,6 +56,20 @@ public class ExtractMatrix implements GenerateMatrix {
             IOException e = new IOException();
             e.addSuppressed(ex);
             throw new HandMadeException("shit happens");
+        } finally {
+            try {
+                if(strScanner != null) {
+                    strScanner.close();
+                    throw new IOException("strScanner was not closed, closing now");
+                }
+            } catch (IOException ex) { System.out.println(ex.getMessage()); }
+
+            try {
+                if(elemsScanner != null) {
+                    elemsScanner.close();
+                    throw new IOException("elemsScanner was not closed, closing now");
+                }
+            } catch (IOException e) { System.out.println(e.getMessage());}
         }
     }
 
