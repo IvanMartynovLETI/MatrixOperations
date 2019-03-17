@@ -23,56 +23,41 @@ public class ExtractMatrix implements GenerateMatrix {
     }
 
     public Matrix generateMatrix() {
-        Scanner strScanner = new Scanner("initial string");
-        Scanner elemsScanner = new Scanner("initial string");
-
         try {
-            ArrayList<String> list = new ArrayList<>();
-            strScanner = new Scanner(path);
-
-            while (strScanner.hasNextLine())
-                list.add(strScanner.nextLine());
-
-            int dimY = list.size();
-            int[][] array = new int[dimY][dimY];
-
-            for (int i = 0; i < dimY; i++) {
-                elemsScanner = new Scanner(list.get(i));
-                int j = 0;
-
-                for (; elemsScanner.hasNextInt(); j++)
-                    array[i][j] = elemsScanner.nextInt();
-
-                elemsScanner.close();
-
-                if (j != dimY)
-                    throw new IllegalArgumentException("Matrix in file is not square");
-            }
-
-            strScanner.close();
-
-            return () -> array;
-        } catch(IOException ex) {
-            IOException e = new IOException();
-            e.addSuppressed(ex);
-            throw new HandMadeException("shit happens");
-        } finally {
-            try {
-                if(strScanner != null) {
-                    strScanner.close();
-                    throw new IOException("strScanner was not closed, closing now");
-                }
-            } catch (IOException ex) { System.out.println(ex.getMessage()); }
+            Scanner strScanner = new Scanner(path);
 
             try {
-                if(elemsScanner != null) {
+                ArrayList<String> list = new ArrayList<>();
+
+                while (strScanner.hasNextLine())
+                    list.add(strScanner.nextLine());
+
+                int dimY = list.size();
+                int[][] array = new int[dimY][dimY];
+
+                for (int i = 0; i < dimY; i++) {
+                    Scanner elemsScanner = new Scanner(list.get(i));
+                    int j = 0;
+
+                    for (; elemsScanner.hasNextInt(); j++)
+                        array[i][j] = elemsScanner.nextInt();
+
                     elemsScanner.close();
-                    throw new IOException("elemsScanner was not closed, closing now");
+
+                    if (j != dimY)
+                        throw new IllegalArgumentException("Matrix in file is not square");
                 }
-            } catch (IOException e) { System.out.println(e.getMessage());}
+
+                return () -> array;
+            } finally {
+                strScanner.close();
+            }
+        } catch (IOException e) {
+            HandMadeException n = new HandMadeException("HandMadeException occured");
+            n.addSuppressed(e);
+            throw n;
         }
     }
-
 
     public String getDescription() {
         return "Matrix generateMatrix() method of ExtractMatrix class\n" +
