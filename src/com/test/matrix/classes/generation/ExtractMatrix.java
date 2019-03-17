@@ -23,6 +23,7 @@ public class ExtractMatrix implements GenerateMatrix {
     }
 
     public Matrix generateMatrix() {
+        IOException e = null;
 
 
         try {
@@ -52,9 +53,9 @@ public class ExtractMatrix implements GenerateMatrix {
 
             return () -> array;
         } catch(IOException ex) {
-            ex.addSuppressed(ex);
+            e.addSuppressed(ex);
             throw new HandMadeException("shit happens");
-        } 
+        }
     }
 
 
