@@ -1,5 +1,6 @@
 package com.test.matrix.classes.generation;
 
+import com.test.matrix.classes.HandMadeException;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
 
@@ -21,12 +22,12 @@ public class ExtractMatrix implements GenerateMatrix {
         path = pathToFile;
     }
 
-    public Matrix generateMatrix() throws IOException {
-        Scanner strScanner = new Scanner(path);
+    public Matrix generateMatrix() {
+
 
         try {
             ArrayList<String> list = new ArrayList<>();
-
+            Scanner strScanner = new Scanner(path);
 
             while (strScanner.hasNextLine())
                 list.add(strScanner.nextLine());
@@ -47,12 +48,13 @@ public class ExtractMatrix implements GenerateMatrix {
                     throw new IllegalArgumentException("Matrix in file is not square");
             }
 
-            return () -> array;
-        } finally {
-            if(strScanner != null)
-                strScanner.close();
-        }
+            strScanner.close();
 
+            return () -> array;
+        } catch(IOException ex) {
+            ex.addSuppressed(ex);
+            throw new HandMadeException("shit happens");
+        } 
     }
 
 

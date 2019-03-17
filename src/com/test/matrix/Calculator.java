@@ -22,7 +22,7 @@ class Calculator {
         ufList.add(cmd);
     }
 
-    Matrix calculate() throws IOException {
+    Matrix calculate() {
 
             Matrix MRef = GMRef.generateMatrix();
             initMRef = MRef;

@@ -1,5 +1,6 @@
 package com.test.matrix;
 
+import com.test.matrix.classes.HandMadeException;
 import com.test.matrix.classes.UserClass;
 import com.test.matrix.classes.flip.FlipHorizontally;
 import com.test.matrix.classes.flip.FlipRelToMainDiag;
@@ -55,7 +56,7 @@ public class Main {
             DObj.displayMatrix(CObj.getInitialMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
-        } catch(IOException ex) {
+        } catch(HandMadeException ex) {
             System.out.println(ex.getMessage());
         }
 
