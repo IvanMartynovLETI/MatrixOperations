@@ -23,9 +23,7 @@ public class ExtractMatrix implements GenerateMatrix {
     }
 
     public Matrix generateMatrix() {
-        IOException e = null;
-
-
+        
         try {
             ArrayList<String> list = new ArrayList<>();
             Scanner strScanner = new Scanner(path);
@@ -53,6 +51,7 @@ public class ExtractMatrix implements GenerateMatrix {
 
             return () -> array;
         } catch(IOException ex) {
+            IOException e = new IOException();
             e.addSuppressed(ex);
             throw new HandMadeException("shit happens");
         }
