@@ -22,36 +22,38 @@ public class GenMatrixFromFile implements GenerateMatrix {
 
     public Matrix generateMatrix() {
         try {
-            Scanner strScanner = new Scanner(path);
 
-            try {
-                ArrayList<String> list = new ArrayList<>();
+            try (Scanner strScanner = new Scanner(path)) {
+                try {
+                    ArrayList<String> list = new ArrayList<>();
 
-                while (strScanner.hasNextLine())
-                    list.add(strScanner.nextLine());
+                    while (strScanner.hasNextLine())
+                        list.add(strScanner.nextLine());
 
-                int dimY = list.size();
-                int[][] array = new int[dimY][dimY];
+                    int dimY = list.size();
+                    int[][] array = new int[dimY][dimY];
 
-                for (int i = 0; i < dimY; i++) {
-                    Scanner elemsScanner = new Scanner(list.get(i));
-                    int j = 0;
-                    try{
-                        for (; elemsScanner.hasNextInt(); j++)
-                            array[i][j] = elemsScanner.nextInt();
+                    for (int i = 0; i < dimY; i++) {
+                        try (Scanner elemsScanner = new Scanner(list.get(i))) {
+                            try {
+                                int j = 0;
+                                for (; elemsScanner.hasNextInt(); j++)
+                                    array[i][j] = elemsScanner.nextInt();
 
-                        elemsScanner.close();
+                                elemsScanner.close();
 
-                        if (j != dimY)
-                            throw new IllegalArgumentException("Matrix in file is not square");
-                    } finally {
-                        elemsScanner.close();
+                                if (j != dimY)
+                                    throw new IllegalArgumentException("Matrix in file is not square");
+                            } finally {
+                                elemsScanner.close();
+                            }
+                        }
                     }
-                }
 
-                return () -> array;
-            } finally {
-                strScanner.close();
+                    return () -> array;
+                } finally {
+                    strScanner.close();
+                }
             }
         } catch (IOException e) {
             MatrixException n = new MatrixException("CustomException occurred");
