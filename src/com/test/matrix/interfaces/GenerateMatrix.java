@@ -1,10 +1,8 @@
 package com.test.matrix.interfaces;
 
-import java.io.IOException;
-
-public interface GenerateMatrix {
-    Matrix generateMatrix ();
+public interface GenerateMatrix<T> {
+    Matrix<T> generateMatrix();
     String getDescription();
-
 }
+
 

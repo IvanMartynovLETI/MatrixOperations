@@ -3,16 +3,17 @@ package com.test.matrix.classes;
 import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
-public class UserClass implements UserFlip {
+public class UserClass<T> implements UserFlip<T> {
 
-    public Matrix flipMethod(Matrix MRef)
+    public Matrix<T> flipMethod(Matrix<T> MRef)
     {
-        final int[][] outputMatrix1 = new int[MRef.getNative().length][MRef.getNative()[0].length];
-        for(int i = 0; i<MRef.getNative().length; i++)
-            for(int j=0; j<MRef.getNative()[0].length; j++)
-                outputMatrix1[i][j]=MRef.getNative()[i][j]+1;
+        final T[][] outputMatrix = (T[][]) new Object[MRef.getNative().length][MRef.getNative()[0].length];
 
-        return () -> outputMatrix1;
+        for(int i=0; i<MRef.getNative().length; i++)
+            for(int j=0; j<MRef.getNative()[0].length; j++)
+                outputMatrix[i][j]=MRef.getNative()[i][j];
+
+        return () -> outputMatrix;
     }
 
     public String getDescription()

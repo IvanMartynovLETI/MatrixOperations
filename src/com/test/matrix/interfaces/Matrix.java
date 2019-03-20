@@ -1,5 +1,5 @@
 package com.test.matrix.interfaces;
 
-public interface Matrix {
-    int[][] getNative();
+public interface Matrix<T> {
+    T[][] getNative();
 }
