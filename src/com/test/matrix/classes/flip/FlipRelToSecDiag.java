@@ -3,15 +3,16 @@ package com.test.matrix.classes.flip;
 import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;
 
-public class FlipRelToSecDiag<T> implements UserFlip<T> {
+public class FlipRelToSecDiag implements UserFlip {
 
-    public Matrix<T> flipMethod(Matrix<T> MRef)
+    public <T>Matrix<T> flipMethod(Matrix<T> MRef)
     {
-        final T[][] outputMatrix = (T[][]) new Object[MRef.getNative().length][MRef.getNative()[0].length];
+        final T[][] aNative = MRef.getNative();
+        T[][] outputMatrix = (T[][]) new Object[aNative.length][aNative[0].length];
 
-        for(int i=0; i<MRef.getNative().length; i++)
-            for(int j=0; j<MRef.getNative()[0].length; j++)
-                outputMatrix[i][j]=MRef.getNative()[MRef.getNative()[0].length-1-j][MRef.getNative().length-1-i];
+        for(int i = 0; i< aNative.length; i++)
+            for(int j = 0; j< aNative[0].length; j++)
+                outputMatrix[i][j]= aNative[aNative[0].length-1-j][aNative.length-1-i];
 
         return () -> outputMatrix;
     }

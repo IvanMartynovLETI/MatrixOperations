@@ -8,7 +8,8 @@ public class DisplayMatrix<T> implements ShowMatrix<T> {
     {
         T[][] m = MRef.getNative();
 
-        for (T[] aM : m) {
+        for (int i = 0; i < m.length; i++) {
+            T[] aM = m[i];
             for (int j = 0; j < m[0].length; j++)
                 System.out.print(aM[j] + "\t");
             System.out.println();

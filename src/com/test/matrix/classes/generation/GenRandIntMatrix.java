@@ -2,18 +2,10 @@ package com.test.matrix.classes.generation;
 
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
+import java.util.Random;
 
 public class GenRandIntMatrix implements GenerateMatrix {
     private int dim;
-    private Integer[][] randMatrix;
-
-    private Matrix MRef = new Matrix() {
-        public Integer[][] getNative() {
-            return randMatrix;
-        }
-    };
-
-    private Matrix MRefOut = this.MRef;
 
     public GenRandIntMatrix(int i) throws IllegalArgumentException {
         if (i == 0) {
@@ -29,15 +21,16 @@ public class GenRandIntMatrix implements GenerateMatrix {
         }
     }
 
-    public Matrix generateMatrix() {
-        randMatrix = new Integer[dim][dim];
+    public Matrix<Integer> generateMatrix() {
+        Integer[][] randMatrix = new Integer[dim][dim];
+        final Random random = new Random();
 
         for (int i = 0; i < dim; i++)
             for (int j = 0; j < dim; j++) {
-                randMatrix[i][j] = (int) (Math.random() * 100);
+                randMatrix[i][j] = random.nextInt(100);
             }
 
-        return MRefOut;
+        return () -> randMatrix;
     }
 
     public String getDescription() {

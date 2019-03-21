@@ -6,26 +6,26 @@ import com.test.matrix.interfaces.UserFlip;
 
 import java.util.ArrayList;
 
-public class Calculator<T> {
-    private ArrayList<UserFlip<T>> ufList = new ArrayList<>();
-    private GenerateMatrix<T> GMRef;
-    private Matrix<T> initMRef;
+public class Calculator {
+    private ArrayList<UserFlip> ufList = new ArrayList<>();
+    private GenerateMatrix GMRef;
+    private Matrix initMRef;
 
-    public Calculator(GenerateMatrix<T> GMR) { GMRef = GMR; }
+    public Calculator(GenerateMatrix GMR) { GMRef = GMR; }
 
-    public void addCmdList(ArrayList<UserFlip<T>> algs) { ufList.addAll(algs); }
+    public void addCmdList(ArrayList<UserFlip> algs) { ufList.addAll(algs); }
 
-    public void addCmd(UserFlip<T> cmd) { ufList.add(cmd); }
+    public void addCmd(UserFlip cmd) { ufList.add(cmd); }
 
-    public Matrix<T> calculate() {
-        Matrix<T> MRef = GMRef.generateMatrix();
+    public Matrix calculate() {
+        Matrix MRef = GMRef.generateMatrix();
         initMRef = MRef;
 
-        for (UserFlip<T> userFlip : ufList) {
+        for (UserFlip userFlip : ufList) {
             MRef = userFlip.flipMethod(MRef);
         }
         return MRef;
     }
 
-    public Matrix<T> getInitialMatrix() { return initMRef; }
+    public Matrix getInitialMatrix() { return initMRef; }
 }

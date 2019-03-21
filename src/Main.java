@@ -5,6 +5,7 @@ import com.test.matrix.classes.flip.FlipRelToMainDiag;
 import com.test.matrix.classes.flip.FlipRelToSecDiag;
 import com.test.matrix.classes.flip.FlipVertically;
 import com.test.matrix.classes.generation.GenIntMatrixFromFile;
+import com.test.matrix.classes.generation.GenRandIntMatrix;
 import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
@@ -15,34 +16,29 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            DisplayMatrix<Integer> DObj = new DisplayMatrix<Integer>();
-            UserFlip<Integer> ufRef = new FlipVertically<Integer>();
+            DisplayMatrix<Integer> DObj = new DisplayMatrix<>();
 
-            ArrayList<UserFlip<Integer>> algorithms = new ArrayList<UserFlip<Integer>>();
-            algorithms.add(new FlipHorizontally<>());
-            algorithms.add(new FlipHorizontally<>());
-            algorithms.add(new FlipVertically<>());
-            algorithms.add(new FlipRelToMainDiag<>());
-            algorithms.add(new FlipRelToSecDiag<>());
+            ArrayList<UserFlip> algorithms = new ArrayList<>();
+            algorithms.add(new FlipHorizontally());
+            algorithms.add(new FlipHorizontally());
+            algorithms.add(new FlipVertically());
+            algorithms.add(new FlipRelToMainDiag());
+            algorithms.add(new FlipRelToSecDiag());
 
-            algorithms.add(new UserClass<>());
-            algorithms.add(new UserClass<>());
+            algorithms.add(new UserClass());
 
             int dim = checkInput(args);
 
-            //GenerateRandomMatrix GObj = new GenerateRandomMatrix(dim);
-            GenIntMatrixFromFile GMObj = new GenIntMatrixFromFile("K:\\shared folder\\1.txt");
-            Calculator<Integer> CObj = new Calculator<Integer>(GMObj);
+            GenRandIntMatrix GMObj = new GenRandIntMatrix(dim);
+            //GenIntMatrixFromFile GMObj = new GenIntMatrixFromFile("K:\\shared folder\\1.txt");
+            Calculator CObj = new Calculator(GMObj);
             CObj.addCmdList(algorithms);
-            CObj.addCmd(new UserClass<>());
+            CObj.addCmd(new UserClass());
 
-            ArrayList<UserFlip<Integer>> algorithms1 = new ArrayList<>();
-            algorithms1.add(new UserClass<>());
-            algorithms1.add(new UserClass<>());
+            ArrayList<UserFlip> algorithms1 = new ArrayList<>();
+            algorithms1.add(new UserClass());
 
             CObj.addCmdList(algorithms1);
-
-            CObj.addCmd(new UserClass<>());
 
             System.out.println("Result is");
             DObj.displayMatrix(CObj.calculate());
