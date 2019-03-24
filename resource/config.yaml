@@ -1,12 +1,12 @@
 #used generator, fileGen if matrix should be generated from
 #file or randGen if int random matrix in range 0-100 should
 #be generated
-genUsed: randGen
+genUsed: fileGen
 #path to matrix file, used in case of fileGen
 genPath: ./resource/matrixFile.txt
 #dim of random matrix, used in case of randGen. dim should be 
 #positive integer in range 2-100
-dim: 3
+dim: 4
 
 
 

@@ -37,14 +37,11 @@ public class Configuration {
     }
 
     public GenerateMatrix getGenRef() {
-        GenerateMatrix GMRef;
         switch (genUsed) {
             case "randGen":
-                GMRef = new GenIntMatrixFromFile(this.getGenPath());
-                return GMRef;
+                return new GenRandIntMatrix(this.checkInput(dim));
             case "fileGen":
-                GMRef = new GenRandIntMatrix(this.checkInput(dim));
-                return GMRef;
+                return new GenIntMatrixFromFile(this.getGenPath());
             default:
                 throw new IllegalArgumentException("Invalid type of matrix generator");
         }
