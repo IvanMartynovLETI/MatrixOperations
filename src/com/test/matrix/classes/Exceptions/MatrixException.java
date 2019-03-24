@@ -1,4 +1,4 @@
-package com.test.matrix.classes;
+package com.test.matrix.classes.Exceptions;
 
 public class MatrixException extends RuntimeException {
     public MatrixException(String msg) {

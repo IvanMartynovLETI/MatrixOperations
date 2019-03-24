@@ -1,6 +1,6 @@
 package com.test.matrix.classes.generation;
 
-import com.test.matrix.classes.MatrixException;
+import com.test.matrix.classes.Exceptions.MatrixException;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
 import java.io.IOException;

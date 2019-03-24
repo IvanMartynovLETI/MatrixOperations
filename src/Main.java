@@ -1,21 +1,32 @@
-import com.test.matrix.Calculator;
-import com.test.matrix.classes.UserClass;
+import com.test.matrix.classes.Calculator.Calculator;
+import com.test.matrix.classes.Config.Configuration;
+import com.test.matrix.classes.UserClasses.UserClass;
 import com.test.matrix.classes.flip.FlipHorizontally;
 import com.test.matrix.classes.flip.FlipRelToMainDiag;
 import com.test.matrix.classes.flip.FlipRelToSecDiag;
 import com.test.matrix.classes.flip.FlipVertically;
-import com.test.matrix.classes.generation.GenIntMatrixFromFile;
-import com.test.matrix.classes.generation.GenRandIntMatrix;
 import com.test.matrix.classes.mapping.DisplayMatrix;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
+import org.yaml.snakeyaml.Yaml;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
         try {
+            GenerateMatrix GMRef;
+            Yaml yaml = new Yaml();
+            try (InputStream in = Files.newInputStream(Paths.get("./resource/config.yaml"))) {
+                Configuration confObj = yaml.loadAs(in, Configuration.class);
+                GMRef = confObj.getGenRef();
+                System.out.println(confObj.toString());
+            }
+
             DisplayMatrix<Integer> DObj = new DisplayMatrix<>();
 
             ArrayList<UserFlip> algorithms = new ArrayList<>();
@@ -24,14 +35,9 @@ public class Main {
             algorithms.add(new FlipVertically());
             algorithms.add(new FlipRelToMainDiag());
             algorithms.add(new FlipRelToSecDiag());
-
             algorithms.add(new UserClass());
 
-            int dim = checkInput(args);
-
-            GenRandIntMatrix GMObj = new GenRandIntMatrix(dim);
-            //GenIntMatrixFromFile GMObj = new GenIntMatrixFromFile("K:\\shared folder\\1.txt");
-            Calculator CObj = new Calculator(GMObj);
+            Calculator CObj = new Calculator(GMRef);
             CObj.addCmdList(algorithms);
             CObj.addCmd(new UserClass());
 
@@ -46,25 +52,8 @@ public class Main {
             DObj.displayMatrix(CObj.getInitialMatrix());
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong argument " + e.getMessage());
-        }
-
-
-
-    }
-
-    private static int checkInput(String[] strArr) {
-        if (strArr.length == 0) {
-            throw new IllegalArgumentException("Empty dimension");
-        }
-
-        try {
-            int i = Integer.parseInt(strArr[0]);
-            if (i < 2 || i > 100) {
-                throw new IllegalArgumentException("Dimension must be in range between 2 and 100");
-            }
-            return i;
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("Dimension must be an integer");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }
