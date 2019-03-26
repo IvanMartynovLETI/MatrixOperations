@@ -45,4 +45,3 @@ public class RandGenConf {
         return (GenerateMatrix) object;
     }
 }
-//test
