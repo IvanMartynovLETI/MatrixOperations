@@ -1,13 +1,9 @@
 package com.test.matrix.classes.config;
 
-import com.test.matrix.classes.config.FileGenConfig.FileGenConf;
-import com.test.matrix.classes.config.OpsListConfig.OpsListConf;
-import com.test.matrix.classes.config.RandGenConfig.RandGenConf;
-import com.test.matrix.classes.config.YamlConfigReader.YamlConfigReader;
+import com.test.matrix.classes.config.yamlconfigreader.YamlConfigReader;
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.UserFlip;
 import org.yaml.snakeyaml.Yaml;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
