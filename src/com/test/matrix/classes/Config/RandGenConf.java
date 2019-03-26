@@ -5,10 +5,10 @@ import com.test.matrix.interfaces.GenerateMatrix;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class RandGenConfig {
+public class RandGenConf {
     private String dim;
 
-    public RandGenConfig(String dim) {
+    public RandGenConf(String dim) {
         this.dim = dim;
     }
 
