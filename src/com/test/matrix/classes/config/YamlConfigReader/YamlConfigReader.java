@@ -1,7 +1,6 @@
-package com.test.Config.YamlConfigReader;
+package com.test.matrix.classes.config.YamlConfigReader;
 
 import java.util.List;
-
 import static java.lang.String.format;
 
 public class YamlConfigReader {
@@ -44,11 +43,9 @@ public class YamlConfigReader {
 
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append( format( "Gen info: %s\n", genInfo ) )
-                .append( format( "file gen settings: %s\n", fileGenSettings ) )
-                .append( format( "rand gen settings: %s\n", randGenSettings ) )
-                .append( format( "calc ops list: %s\n", calcOpsList ) )
-                .toString();
+        return format("Gen info: %s\n", genInfo) +
+                format("file gen settings: %s\n", fileGenSettings) +
+                format("rand gen settings: %s\n", randGenSettings) +
+                format("calc ops list: %s\n", calcOpsList);
     }
 }

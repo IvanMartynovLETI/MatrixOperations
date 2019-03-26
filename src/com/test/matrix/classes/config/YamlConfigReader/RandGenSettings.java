@@ -1,7 +1,7 @@
-package com.test.Config.YamlConfigReader;
+package com.test.matrix.classes.config.YamlConfigReader;
 
 public class RandGenSettings {
-    public String randMatrixDim;
+    private String randMatrixDim;
 
     public String getRandMatrixDim() {
         return randMatrixDim;

@@ -1,7 +1,7 @@
-package com.test.Config.YamlConfigReader;
+package com.test.matrix.classes.config.YamlConfigReader;
 
 public class FileGenSettings {
-    public String pathToMatrixFile;
+    private String pathToMatrixFile;
 
     public String getPathToMatrixFile() {
         return pathToMatrixFile;

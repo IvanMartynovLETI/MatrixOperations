@@ -1,7 +1,7 @@
-package com.test.Config.YamlConfigReader;
+package com.test.matrix.classes.config.YamlConfigReader;
 
 public class GenInfo {
-    public String genUsed;
+    private String genUsed;
 
     public String getGenUsed() {
         return genUsed;

@@ -1,14 +1,13 @@
-package com.test.matrix.classes.config.MatrixGenConfig;
+package com.test.matrix.classes.config.FileGenConfig;
 
 import com.test.matrix.interfaces.GenerateMatrix;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class MatrixGenConf {
+public class FileGenConf {
     private String filePath;
 
-    public MatrixGenConf(String filePath) {
+    public FileGenConf(String filePath) {
         this.filePath = filePath;
     }
 
@@ -20,13 +19,12 @@ public class MatrixGenConf {
         this.filePath = filePath;
     }
 
-    public GenerateMatrix getFileGenRef(String filePath) throws ClassNotFoundException, NoSuchMethodException,
+    public GenerateMatrix getFileGenRef() throws ClassNotFoundException, NoSuchMethodException,
             InstantiationException, IllegalAccessException, InvocationTargetException {
-
         String className = "com.test.matrix.classes.generation.GenIntMatrixFromFile";
         Class clazz = Class.forName(className);
         Constructor constructor = clazz.getConstructor(String.class);
-        Object object = constructor.newInstance(filePath);
+        Object object = constructor.newInstance(this.getFilePath());
         return (GenerateMatrix) object;
     }
 
