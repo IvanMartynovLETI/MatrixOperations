@@ -1,72 +1,66 @@
-package com.test.matrix.classes.Config;
+package com.test.matrix.classes.config;
 
-import com.test.matrix.classes.generation.GenIntMatrixFromFile;
-import com.test.matrix.classes.generation.GenRandIntMatrix;
+import com.test.matrix.classes.config.FileGenConfig.FileGenConf;
+import com.test.matrix.classes.config.OpsListConfig.OpsListConf;
+import com.test.matrix.classes.config.RandGenConfig.RandGenConf;
+import com.test.matrix.classes.config.YamlConfigReader.YamlConfigReader;
 import com.test.matrix.interfaces.GenerateMatrix;
+import com.test.matrix.interfaces.UserFlip;
+import org.yaml.snakeyaml.Yaml;
 
-import static java.lang.String.format;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Configuration {
-    private String genPath;
-    private String genUsed;
-    private String dim;
+    private String filePath;
 
-
-    public String getGenPath() {
-        return genPath;
+    public Configuration(String filePath) {
+        this.filePath = filePath;
     }
 
-    public String getGenUsed() {
-        return genUsed;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public String getDim() {
-        return dim;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
-    public void setGenPath(String genPath) {
-        this.genPath = genPath;
-    }
+    public GenerateMatrix getGenRef() throws IOException, ClassNotFoundException, NoSuchMethodException,
+            InstantiationException, IllegalAccessException, InvocationTargetException {
+        Yaml yaml = new Yaml();
 
-    public void setGenUsed(String genUsed) {
-        this.genUsed = genUsed;
-    }
+        try (InputStream in = Files.newInputStream(Paths.get(this.getFilePath()))) {
+            YamlConfigReader config = yaml.loadAs(in, YamlConfigReader.class);
 
-    public void setDim(String dim) {
-        this.dim = dim;
-    }
-
-    public GenerateMatrix getGenRef() {
-        switch (genUsed) {
-            case "randGen":
-                return new GenRandIntMatrix(this.checkInput(dim));
-            case "fileGen":
-                return new GenIntMatrixFromFile(this.getGenPath());
-            default:
-                throw new IllegalArgumentException("Invalid type of matrix generator");
-        }
-    }
-
-    public int checkInput(String dim) {
-        if (dim.equals("")) {
-            throw new IllegalArgumentException("Empty dimension");
-        }
-
-        try {
-            int i = Integer.parseInt(dim);
-            if (i < 2 || i > 100) {
-                throw new IllegalArgumentException("Dimension must be in range between 2 and 100");
+            switch (config.getGenInfo().getGenUsed()) {
+                case "randGen":
+                    RandGenConf RGCObj = new RandGenConf(config.getRandGenSettings().getRandMatrixDim());
+                    return RGCObj.getRandGenRef();
+                case "fileGen":
+                    FileGenConf FGCObj = new FileGenConf(config.getFileGenSettings().getPathToMatrixFile());
+                    return FGCObj.getFileGenRef();
+                default:
+                    throw new IllegalArgumentException("Incorrect gen type in yaml config file");
             }
-            return i;
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("Dimension must be an integer");
         }
     }
 
-    @Override
-    public String toString() {
-        return format("Used generator: %s\n", genUsed) +
-                (format("Path to matrix file: %s\n", genPath)) +
-                format("dimension of random matrix %s\n", dim);
+    public ArrayList<UserFlip> getOpsList() throws IOException, ClassNotFoundException, NoSuchMethodException,
+            InstantiationException, IllegalAccessException, InvocationTargetException {
+        Yaml yaml = new Yaml();
+
+        try (InputStream in = Files.newInputStream(Paths.get(this.getFilePath()))) {
+            YamlConfigReader config = yaml.loadAs(in, YamlConfigReader.class);
+            OpsListConf OLCObj = new OpsListConf(config.getCalcOpsList());
+            return OLCObj.getAlgorithms();
+        }
+
     }
+
+
 }

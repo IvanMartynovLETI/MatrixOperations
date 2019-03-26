@@ -1,0 +1,16 @@
+genInfo:
+    genUsed: fileGen #type here fileGen if matrix should be generated from specified txt file
+                     #or randGen if random matrix generator should be used
+fileGenSettings:
+    pathToMatrixFile: ./resources/matrixFile.txt #path to txt file of matrix for generation matrix from file
+
+randGenSettings:
+    randMatrixDim: 6 #dimension matrix for random matrix generator
+
+#in list below type full qualified names of flip classes
+calcOpsList:
+   - com.test.matrix.classes.flip.FlipHorizontally
+   - com.test.matrix.classes.flip.FlipRelToMainDiag
+   - com.test.matrix.classes.flip.FlipRelToSecDiag
+   - com.test.matrix.classes.flip.FlipVertically
+   - com.test.matrix.classes.userClasses.UserClass

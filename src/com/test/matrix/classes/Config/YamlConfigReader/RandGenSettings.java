@@ -1,0 +1,18 @@
+package com.test.matrix.classes.config.YamlConfigReader;
+
+public class RandGenSettings {
+    private String randMatrixDim;
+
+    public String getRandMatrixDim() {
+        return randMatrixDim;
+    }
+
+    public void setRandMatrixDim(String randMatrixDim) {
+        this.randMatrixDim = randMatrixDim;
+    }
+
+    @Override
+    public String toString() {
+        return getRandMatrixDim();
+    }
+}

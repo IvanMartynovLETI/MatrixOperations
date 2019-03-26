@@ -1,4 +1,4 @@
-package com.test.matrix.classes.Calculator;
+package com.test.matrix.classes.calculator;
 
 import com.test.matrix.interfaces.GenerateMatrix;
 import com.test.matrix.interfaces.Matrix;
