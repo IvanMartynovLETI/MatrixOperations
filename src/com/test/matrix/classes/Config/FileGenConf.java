@@ -1,4 +1,4 @@
-package com.test.matrix.classes.config.FileGenConfig;
+package com.test.matrix.classes.config;
 
 import com.test.matrix.interfaces.GenerateMatrix;
 import java.lang.reflect.Constructor;

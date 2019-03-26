@@ -1,4 +1,4 @@
-package com.test.matrix.classes.userClasses;
+package com.test.matrix.classes.userclasses;
 
 import com.test.matrix.interfaces.Matrix;
 import com.test.matrix.interfaces.UserFlip;

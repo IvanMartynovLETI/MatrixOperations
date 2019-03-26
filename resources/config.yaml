@@ -13,4 +13,4 @@ calcOpsList:
    - com.test.matrix.classes.flip.FlipRelToMainDiag
    - com.test.matrix.classes.flip.FlipRelToSecDiag
    - com.test.matrix.classes.flip.FlipVertically
-   - com.test.matrix.classes.userClasses.UserClass
+   - com.test.matrix.classes.userclasses.UserClass

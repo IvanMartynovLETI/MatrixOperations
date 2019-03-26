@@ -1,7 +1,6 @@
-package com.test.matrix.classes.config.RandGenConfig;
+package com.test.matrix.classes.config;
 
 import com.test.matrix.interfaces.GenerateMatrix;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 

@@ -1,7 +1,6 @@
-package com.test.matrix.classes.config.OpsListConfig;
+package com.test.matrix.classes.config;
 
 import com.test.matrix.interfaces.UserFlip;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
