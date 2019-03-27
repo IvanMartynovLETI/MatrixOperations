@@ -1,44 +1,32 @@
 package com.test.matrix.classes.config;
 
+import com.test.matrix.classes.exceptions.MatrixException;
 import com.test.matrix.interfaces.UserFlip;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OpsListConf {
-    private ArrayList<UserFlip> algorithms = new ArrayList<>();
-    private List<String> calcOpsList;
 
-    public ArrayList<UserFlip> getAlgorithms() {
-        return algorithms;
+  private UserFlip instanceOperation(String operation) {
+    try {
+      Class<? extends UserFlip> flipClass = Class.forName(operation).asSubclass(UserFlip.class);
+      return flipClass.newInstance();
+    } catch (Exception e) {
+      throw new MatrixException(String.format("Can not instance of class %s", operation), e);
     }
+  }
 
-    public void setAlgorithms(ArrayList<UserFlip> algorithms) {
-        this.algorithms = algorithms;
-    }
+  public Collection<UserFlip> instanceOperations(List<String> opsList) throws MatrixException {
+    return opsList
+        .stream()
+        .map(this::instanceOperation)
+        .collect(Collectors.toList());
+  }
 
-    public List<String> getCalcOpsList() {
-        return calcOpsList;
-    }
-
-    public void setCalcOpsList(List<String> calcOpsList) {
-        this.calcOpsList = calcOpsList;
-    }
-
-    public  OpsListConf(List<String> opsList) throws ClassNotFoundException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException, InvocationTargetException {
-
-        Class[] clazz = new Class[opsList.size()];
-        Constructor[] constructor = new Constructor[opsList.size()];
-        Object[] object = new Object[opsList.size()];
-
-        for(int i = 0; i < opsList.size(); i ++) {
-            clazz[i] = Class.forName(opsList.get(i));
-            constructor[i] = clazz[i].getConstructor();
-            object[i] = constructor[i].newInstance();
-            this.algorithms.add((UserFlip) object[i]);
-        }
-    }
+  public static OpsListConf newInstance() {
+    return new OpsListConf();
+  }
 }
 
