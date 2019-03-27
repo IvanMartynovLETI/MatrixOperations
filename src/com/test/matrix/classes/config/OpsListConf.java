@@ -3,9 +3,9 @@ package com.test.matrix.classes.config;
 import com.test.matrix.classes.exceptions.MatrixException;
 import com.test.matrix.interfaces.UserFlip;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OpsListConf {
 
@@ -19,10 +19,13 @@ public class OpsListConf {
   }
 
   public Collection<UserFlip> instanceOperations(List<String> opsList) throws MatrixException {
-    return opsList
-        .stream()
-        .map(this::instanceOperation)
-        .collect(Collectors.toList());
+    List<UserFlip> result = new ArrayList<>(opsList.size());
+
+    for (String operation : opsList) {
+      result.add(instanceOperation(operation));
+    }
+
+    return result;
   }
 
   public static OpsListConf newInstance() {
