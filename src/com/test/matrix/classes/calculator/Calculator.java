@@ -18,8 +18,8 @@ public class Calculator {
 
     public void addCmd(UserFlip cmd) { ufList.add(cmd); }
 
-    public Matrix calculate() {
-        Matrix MRef = GMRef.generateMatrix();
+    public <T>Matrix<T> calculate() {
+        Matrix<T> MRef = GMRef.generateMatrix();
         initMRef = MRef;
 
         for (UserFlip userFlip : ufList) {
@@ -28,5 +28,5 @@ public class Calculator {
         return MRef;
     }
 
-    public Matrix getInitialMatrix() { return initMRef; }
+    public <T>Matrix<T> getInitialMatrix() { return initMRef; }
 }

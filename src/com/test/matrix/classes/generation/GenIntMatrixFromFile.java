@@ -20,7 +20,7 @@ public class GenIntMatrixFromFile implements GenerateMatrix {
         path = pathToFile;
     }
 
-    public Matrix generateMatrix() {
+    public Matrix<Integer> generateMatrix() {
 
         try {
 

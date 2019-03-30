@@ -11,8 +11,7 @@ public class FlipHorizontally implements UserFlip{
         T[][] outputMatrix = (T[][]) new Object[aNative.length][aNative[0].length];
 
         for(int i = 0; i< aNative.length; i++)
-            for(int j = 0; j< aNative[0].length; j++)
-                outputMatrix[i][j]= aNative[aNative.length-1-i][j];
+            System.arraycopy(aNative[aNative.length - 1 - i], 0, outputMatrix[i], 0, aNative[0].length);
 
         return () -> outputMatrix;
     }

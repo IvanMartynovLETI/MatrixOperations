@@ -40,8 +40,8 @@ public class RandGenConf {
             InstantiationException, IllegalAccessException, InvocationTargetException {
 
         String className = "com.test.matrix.classes.generation.GenRandIntMatrix";
-        Class clazz = Class.forName(className);
-        Constructor constructor = clazz.getConstructor(int.class);
+        Class<?> clazz = Class.forName(className);
+        Constructor<?> constructor = clazz.getConstructor(int.class);
         Object object = constructor.newInstance(this.checkInput(this.getDim()));
         return (GenerateMatrix) object;
     }

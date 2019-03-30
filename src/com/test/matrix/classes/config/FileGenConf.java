@@ -23,8 +23,8 @@ public class FileGenConf {
     public GenerateMatrix getFileGenRef() throws ClassNotFoundException, NoSuchMethodException,
             InstantiationException, IllegalAccessException, InvocationTargetException {
         String className = "com.test.matrix.classes.generation.GenIntMatrixFromFile";
-        Class clazz = Class.forName(className);
-        Constructor constructor = clazz.getConstructor(String.class);
+        Class<?> clazz = Class.forName(className);
+        Constructor<?> constructor = clazz.getConstructor(String.class);
         Object object = constructor.newInstance(this.getFilePath());
         return (GenerateMatrix) object;
     }
