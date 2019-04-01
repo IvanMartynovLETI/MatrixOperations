@@ -7,18 +7,18 @@ import com.test.matrix.interfaces.UserFlip;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Calculator {
+public class Calculator<T> {
     private Collection<UserFlip> ufList = new ArrayList<>();
-    private GenerateMatrix GMRef;
-    private Matrix initMRef;
+    private GenerateMatrix<T> GMRef;
+    private Matrix<T> initMRef;
 
-    public Calculator(GenerateMatrix GMR) { GMRef = GMR; }
+    public Calculator(GenerateMatrix<T> GMR) { GMRef = GMR; }
 
     public void addCmdList(Collection<UserFlip> algs) { ufList.addAll(algs); }
 
     public void addCmd(UserFlip cmd) { ufList.add(cmd); }
 
-    public <T>Matrix<T> calculate() {
+    public Matrix<T> calculate() {
         Matrix<T> MRef = GMRef.generateMatrix();
         initMRef = MRef;
 
@@ -28,5 +28,5 @@ public class Calculator {
         return MRef;
     }
 
-    public <T>Matrix<T> getInitialMatrix() { return initMRef; }
+    public Matrix<T> getInitialMatrix() { return initMRef; }
 }
