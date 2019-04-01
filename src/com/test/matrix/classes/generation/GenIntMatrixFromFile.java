@@ -33,6 +33,7 @@ public class GenIntMatrixFromFile implements GenerateMatrix {
                 int dimY = list.size();
                 final Integer[][] array = new Integer[dimY][dimY];
 
+
                 for (int i = 0; i < dimY; i++) {
                     try (Scanner elemsScanner = new Scanner(list.get(i))) {
                         int j = 0;

@@ -5,22 +5,22 @@ import com.test.matrix.interfaces.GenerateMatrix;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class RandGenConf {
+class RandGenConf {
     private String dim;
 
-    public RandGenConf(String dim) {
+    RandGenConf(String dim) {
         this.dim = dim;
     }
 
-    public String getDim() {
+    private String getDim() {
         return dim;
     }
 
-    public void setDim(String dim) {
+    /*public void setDim(String dim) {
         this.dim = dim;
-    }
+    }*/
 
-    public int checkInput(String dim) {
+    private int checkInput(String dim) {
         if (dim.equals("")) {
             throw new IllegalArgumentException("Empty dimension");
         }
@@ -36,7 +36,7 @@ public class RandGenConf {
         }
     }
 
-    public GenerateMatrix getRandGenRef() throws ClassNotFoundException, NoSuchMethodException,
+    GenerateMatrix getRandGenRef() throws ClassNotFoundException, NoSuchMethodException,
             InstantiationException, IllegalAccessException, InvocationTargetException {
 
         String className = "com.test.matrix.classes.generation.GenRandIntMatrix";
